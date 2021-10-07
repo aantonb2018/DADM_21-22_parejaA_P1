@@ -7,11 +7,16 @@
     <string name="next">Next</string>
     <string name="finish">Finish</string>
     <string name="prev">Previous</string>
+    <string name="introducirNombre">Introduce tu nombre</string>
 
     <array name="test">
-        <item>¿Cuál es el sueño de Luffy?;Encontrar a su padre;*Ser el Rey de los Piratas;Casarse con Nami;Comerse el jamón mas grande del mundo</item>
+        <item>¿Cuál es el sueño de Luffy?;Encontrar a su padre;*Ser el Rey de los Piratas;Casarse
+            con Nami;Comerse el jamón mas grande del mundo
+        </item>
         <item>¿Cómo se llamaba el padre de Natsu?;Furiyama;Inferno;Nacho;*Igneel</item>
         <item>¿Cuál es el digimon de Tai?;*Agumon;Patamon;Kakamon;Palmon</item>
-        <item>¿En qué escuela estudia Hinata Shoyo?;*Instituto Karasuno;Instituto Eleven;Instituto Kakugawa;Instituto Kaminari</item>
+        <item>¿En qué escuela estudia Hinata Shoyo?;*Instituto Karasuno;Instituto Eleven;Instituto
+            Kakugawa;Instituto Kaminari
+        </item>
     </array>
 </resources>
