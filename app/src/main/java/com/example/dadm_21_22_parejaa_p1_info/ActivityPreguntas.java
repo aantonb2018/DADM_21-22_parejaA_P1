@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityPreguntas extends AppCompatActivity {
 
     private int idxRespuestas[] = {
             R.id.respuesta0, R.id.respuesta1, R.id.respuesta2, R.id.respuesta3

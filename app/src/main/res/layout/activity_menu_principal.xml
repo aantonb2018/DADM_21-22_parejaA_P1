@@ -20,12 +20,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/textView"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce tu nombre"
-            android:minHeight="48dp" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:padding="10sp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/txt_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Introduce tu nombre"
+                android:minHeight="48dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </androidx.cardview.widget.CardView>
 
     <ImageView
@@ -42,7 +51,7 @@
         app:srcCompat="@drawable/titulo" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_empezar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
@@ -56,6 +65,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.0" />
