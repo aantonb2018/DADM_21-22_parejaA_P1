@@ -19,7 +19,7 @@ public class ActivityPreguntas extends AppCompatActivity {
     private TextView pregunta; //Texto que muestra la pregunta
     private RadioGroup grupoRespuestas; //Grupo para los radioButtons de las respuestas
     private Button siguiente; //Boton para pasar a la siguiente pregunta
-    private Button anterior; //Boton para volver a la pregunta anterior (probablemente haya que quitarlo)
+    //private Button anterior; //Boton para volver a la pregunta anterior (probablemente haya que quitarlo)
 
     private String[][] preguntas; //Array de arrays, contiene los arrays donde en la pos 0 esta la pregunta y en el resto las respuestas
     private int idxPregunta = 0; //Indice de la pregunta actual
@@ -36,7 +36,7 @@ public class ActivityPreguntas extends AppCompatActivity {
         pregunta = (TextView) findViewById(R.id.pregunta);
         grupoRespuestas = (RadioGroup) findViewById(R.id.radioGroup);
         siguiente = (Button) findViewById(R.id.siguiente);
-        anterior = (Button) findViewById(R.id.anterior);
+        //anterior = (Button) findViewById(R.id.anterior);
 
         mostrarPreguntas();
         //Toast.makeText(MainActivity.this, preguntas[0][1], Toast.LENGTH_LONG).show();

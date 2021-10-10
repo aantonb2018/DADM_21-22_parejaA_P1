@@ -8,6 +8,7 @@
     <string name="finish">Finish</string>
     <string name="prev">Previous</string>
     <string name="introducirNombre">Introduce tu nombre</string>
+    <string name="string_resultados">RESULTADOS</string>
 
     <array name="test">
         <item>¿Cuál es el sueño de Luffy?;Encontrar a su padre;*Ser el Rey de los Piratas;Casarse
