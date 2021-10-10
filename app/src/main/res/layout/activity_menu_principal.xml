@@ -58,7 +58,6 @@
         android:layout_marginTop="60dp"
         android:backgroundTint="#000D80"
         android:fontFamily="@font/aldrich"
-        android:onClick="empezar"
         android:padding="25dp"
         android:text="EMPEZAR"
         android:textColor="@color/white"
