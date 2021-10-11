@@ -2,7 +2,11 @@ package com.example.dadm_21_22_parejaa_p1_info;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -12,11 +16,11 @@ import android.widget.TextView;
 
 public class ActivityPreguntas extends AppCompatActivity {
 
-    private int idxRespuestas[] = {
-            R.id.respuesta0, R.id.respuesta1, R.id.respuesta2, R.id.respuesta3
-    };
+    private TextView pregunta; //Texto que muestra el indice de pregunta
+    private TextView acierto;  //Texto que muestra el numero de aciertos
+    private TextView fallo;    //Texto que muestra el numero de fallos
+    private FragmentManager fragManager;
 
-    private TextView pregunta; //Texto que muestra la pregunta
     private RadioGroup grupoRespuestas; //Grupo para los radioButtons de las respuestas
     private Button siguiente; //Boton para pasar a la siguiente pregunta
     //private Button anterior; //Boton para volver a la pregunta anterior (probablemente haya que quitarlo)
@@ -34,12 +38,16 @@ public class ActivityPreguntas extends AppCompatActivity {
         leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
 
         pregunta = (TextView) findViewById(R.id.pregunta);
-        grupoRespuestas = (RadioGroup) findViewById(R.id.radioGroup);
-        siguiente = (Button) findViewById(R.id.siguiente);
-        //anterior = (Button) findViewById(R.id.anterior);
+        pregunta.setText(idxPregunta + "/10");
 
-        mostrarPreguntas();
-        //Toast.makeText(MainActivity.this, preguntas[0][1], Toast.LENGTH_LONG).show();
+        acierto = (TextView) findViewById(R.id.acierto);
+        acierto.setText(aciertos + "/10");
+
+        fallo = (TextView) findViewById(R.id.fallo);
+        fallo.setText(fallos + "/10");
+
+        fragManager = getSupportFragmentManager();
+        fragManager.beginTransaction().replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
     }
 
     private void leerItems(){
@@ -58,7 +66,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }
         }
     }
-
+/*
     private void mostrarPreguntas(){
         grupoRespuestas.clearCheck(); //Limpia la respuesta seleccionada
 
@@ -67,15 +75,10 @@ public class ActivityPreguntas extends AppCompatActivity {
             RadioButton resp = (RadioButton) findViewById(idxRespuestas[i]);
             resp.setText(preguntas[idxPregunta][i+1]); //Escribe la respuesta del indice correspondiente en la pantalla
 
-            /*
-            if(soluciones[idxPregunta] == i){ //Comprueba si esa respuesat es al correcta
-                resp.setChecked(true); //Autoselecciona la respuesta correcta
-            }
-            */
 
         }
     }
-
+*/
     private void comprobarRespuesta(){
         int respuestaSelec = grupoRespuestas.getCheckedRadioButtonId(); //Recoge el id de la respuesta marcada
 
@@ -83,6 +86,58 @@ public class ActivityPreguntas extends AppCompatActivity {
             aciertos++;
         }else{
             fallos++;
+        }
+    }
+
+    public String[][] getPreguntas(){
+        return preguntas;
+    }
+
+    public int[] getSoluciones(){
+        return soluciones;
+    }
+
+    public int getIdxPregunta(){
+        return idxPregunta;
+    }
+
+    public void addAcierto(){
+        aciertos++;
+        acierto.setText(aciertos + "/10");
+        addIdxPregunta();
+    }
+
+    public void addFallo(){
+        fallos++;
+        fallo.setText(fallos + "/10");
+        addIdxPregunta();
+    }
+
+    public void addIdxPregunta(){
+        idxPregunta++;
+        pregunta.setText(idxPregunta + "/10");
+
+        if(idxPregunta < 10) {
+            FragmentTransaction fragTransaction = fragManager.beginTransaction();
+            int fragType = 0 + (int) (Math.random() * 4);
+            switch (fragType) {
+                case 0:
+                    fragTransaction.replace(R.id.fragmentContainerView, new RadiobuttonFragment(), "FRAGMENT_QUESTION");
+                    break;
+                case 1:
+                    fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+                    break;
+                case 2:
+                    fragTransaction.replace(R.id.fragmentContainerView, new CheckboxFragment(), "FRAGMENT_QUESTION");
+                    break;
+                case 3:
+                    fragTransaction.replace(R.id.fragmentContainerView, new SpinnerFragment(), "FRAGMENT_QUESTION");
+                    break;
+            }
+            fragTransaction.commit();
+        }else{
+            Intent resultado = new Intent(ActivityPreguntas.this, Resultados.class);
+            startActivity(resultado);
         }
     }
 }
