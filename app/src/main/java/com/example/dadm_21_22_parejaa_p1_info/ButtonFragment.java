@@ -3,10 +3,12 @@ package com.example.dadm_21_22_parejaa_p1_info;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,9 @@ public class ButtonFragment extends Fragment {
     private Button button[] = new Button[4];
     private TextView buttonQ;
     private ImageView buttonI;
+
+    MediaPlayer sfx_mal;
+    MediaPlayer sfx_bien;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -127,9 +132,13 @@ public class ButtonFragment extends Fragment {
 
     public void comprobarRespuesta(int respuestaSelec){
         if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
+            sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
+            sfx_bien.start();
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#B5DD86"));
             ((ActivityPreguntas) getActivity()).addAcierto();
         }else{
+            sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
+            sfx_mal.start();
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#CC7474"));
             ((ActivityPreguntas) getActivity()).addFallo();
         }

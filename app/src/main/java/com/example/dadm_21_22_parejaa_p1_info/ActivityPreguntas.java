@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -61,10 +60,12 @@ public class ActivityPreguntas extends AppCompatActivity {
     }
 
     private void leerItems(){
+
         String auxPreguntas[] = getResources().getStringArray(R.array.test); //Obtenemos los items que son las preguntas y respuestas
         auxPreguntas = randomizar(auxPreguntas);
         preguntas = new String[auxPreguntas.length][5];
         soluciones = new int[auxPreguntas.length];
+
         for(int i = 0; i < auxPreguntas.length; i++){
             String respuestas[] = auxPreguntas[i].split(";"); //Separamos cada elemento del array por los ; para tener en cada posicion una respuesta diferente
             //Toast.makeText(MainActivity.this, respuestas[4], Toast.LENGTH_LONG).show();

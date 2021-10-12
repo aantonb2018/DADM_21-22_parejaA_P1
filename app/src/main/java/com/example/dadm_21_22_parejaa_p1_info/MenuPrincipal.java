@@ -2,7 +2,7 @@ package com.example.dadm_21_22_parejaa_p1_info;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.view.View;
 import android.os.Bundle;
 import android.content.Intent;
@@ -14,7 +14,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     EditText inputTexto;
     Button btn;
-    private SharedPreferences sP;
+    MediaPlayer sfx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +31,13 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 // si el campo de input está vacío se lanza un mensaje pidiendo el nombre
                 if ((inputTexto.getText().toString()).isEmpty()){
                     Toast.makeText(MenuPrincipal.this,"Introduce un nombre", Toast.LENGTH_LONG).show();
                 }
                 else{
                     // en caso contrario, se pasa a la siguiente actividad
-                    //SharedPreferences.Editor editor = sP.edit();
-                    //editor.putString("nick", inputTexto.getText().toString());
-                    //editor.commit();
-
                     Intent empezar = new Intent(MenuPrincipal.this, ActivityPreguntas.class);
                     startActivity(empezar);
                 }
