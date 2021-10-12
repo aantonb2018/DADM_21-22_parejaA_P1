@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityPreguntas"
-    android:background="@drawable/fondo_preguntas">
+    android:background="@drawable/fondo_preguntas"
+    tools:context=".ActivityPreguntas">
 
     <TextView
         android:id="@+id/fallo"
@@ -16,7 +16,9 @@
         android:text="ZZ/ZZ"
         android:textColor="#CC7474"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/pregunta"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,9 +31,12 @@
         android:text="XX/XX"
         android:textColor="#F4F1F1"
         android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineMainVert2"
+        app:layout_constraintEnd_toStartOf="@+id/fallo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/acierto"
+        app:layout_constraintStart_toStartOf="@+id/guidelineMainVert1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -43,8 +48,9 @@
         android:text="YY/YY"
         android:textColor="#B5DD86"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
         app:layout_constraintEnd_toStartOf="@+id/pregunta"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,10 +59,37 @@
         android:name="com.example.dadm_21_22_parejaa_p1_info.ButtonFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pregunta" />
+        app:layout_constraintTop_toBottomOf="@+id/guidelineMainHor1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainVert1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainVert2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.70" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainHor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainHor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,9 @@
             android:textAlignment="center"
             android:textColor="#E1DDDD"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/guidelineButtonQ"
+            app:layout_constraintBottom_toTopOf="@+id/buttonI"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,10 +33,11 @@
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 0"
+            app:layout_constraintBottom_toTopOf="@+id/button1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButtonI"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineButton0"/>
+            app:layout_constraintTop_toBottomOf="@+id/buttonI" />
 
         <Button
             android:id="@+id/button1"
@@ -45,10 +47,11 @@
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 1"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButton0"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineButton1"/>
+            app:layout_constraintTop_toBottomOf="@+id/button0" />
 
         <Button
             android:id="@+id/button2"
@@ -58,10 +61,11 @@
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 2"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButton1"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineButton2"/>
+            app:layout_constraintTop_toBottomOf="@+id/button1" />
 
         <Button
             android:id="@+id/button3"
@@ -71,10 +75,11 @@
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 3"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButton2"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineButton3" />
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
 
         <ImageView
             android:id="@+id/buttonI"
@@ -82,11 +87,11 @@
             android:layout_height="166dp"
             android:layout_marginTop="20dp"
             android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/button0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelineButtonQ"
-            app:layout_constraintBottom_toBottomOf="@+id/guidelineButtonI"
+            app:layout_constraintTop_toBottomOf="@+id/buttonQ"
             tools:src="@drawable/image0" />
 
         <androidx.constraintlayout.widget.Guideline
