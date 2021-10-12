@@ -18,7 +18,7 @@
             android:fontFamily="@font/aldrich"
             android:text="Question"
             android:textAlignment="center"
-            android:textColor="#E1DDDD"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

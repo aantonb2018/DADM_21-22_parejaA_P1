@@ -28,7 +28,7 @@
         android:layout_marginTop="40dp"
         android:fontFamily="@font/aldrich"
         android:text="XX/XX"
-        android:textColor="#F4F1F1"
+        android:textColor="@color/black"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
         app:layout_constraintEnd_toEndOf="@+id/guidelineMainVert2"
