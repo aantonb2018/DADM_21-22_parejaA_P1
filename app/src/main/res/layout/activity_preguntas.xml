@@ -55,7 +55,7 @@
         android:id="@+id/fragmentContainerView"
         android:name="com.example.dadm_21_22_parejaa_p1_info.ButtonFragment"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor2"
         app:layout_constraintEnd_toEndOf="@+id/guidelineMainVert2"
         app:layout_constraintStart_toStartOf="@+id/guidelineMainVert1"

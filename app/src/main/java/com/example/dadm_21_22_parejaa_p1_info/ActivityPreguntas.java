@@ -44,7 +44,7 @@ public class ActivityPreguntas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
