@@ -19,12 +19,10 @@
             android:textAlignment="center"
             android:textColor="#E1DDDD"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineButtonQ"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.057" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button0"
@@ -35,9 +33,9 @@
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonI" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineButtonI"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineButton0"/>
 
         <Button
             android:id="@+id/button1"
@@ -49,7 +47,8 @@
             android:text="ANSWER 1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button0" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineButton0"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineButton1"/>
 
         <Button
             android:id="@+id/button2"
@@ -61,7 +60,8 @@
             android:text="ANSWER 2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button1" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineButton1"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineButton2"/>
 
         <Button
             android:id="@+id/button3"
@@ -71,12 +71,10 @@
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 3"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineButton2"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineButton3" />
 
         <ImageView
             android:id="@+id/buttonI"
@@ -87,8 +85,51 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonQ"
+            app:layout_constraintTop_toTopOf="@+id/guidelineButtonQ"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineButtonI"
             tools:src="@drawable/image0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineButtonQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineButtonI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineButton0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
