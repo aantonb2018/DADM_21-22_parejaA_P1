@@ -2,6 +2,7 @@ package com.example.dadm_21_22_parejaa_p1_info;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.view.View;
 import android.os.Bundle;
 import android.content.Intent;
@@ -13,6 +14,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     EditText inputTexto;
     Button btn;
+    MediaPlayer sfx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MenuPrincipal extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 // si el campo de input está vacío se lanza un mensaje pidiendo el nombre
                 if ((inputTexto.getText().toString()).isEmpty()){

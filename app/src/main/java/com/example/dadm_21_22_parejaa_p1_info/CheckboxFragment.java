@@ -3,6 +3,7 @@ package com.example.dadm_21_22_parejaa_p1_info;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,9 @@ public class CheckboxFragment extends Fragment {
     private TextView checkboxQ;
     private Button checkboxC;
     private ImageView checkboxI;
+
+    MediaPlayer sfx_mal;
+    MediaPlayer sfx_bien;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -121,9 +125,13 @@ public class CheckboxFragment extends Fragment {
 
         if(respuestaSelec != -1) {
             if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
+                sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
+                sfx_bien.start();
                 checkboxC.setBackgroundColor(Color.parseColor("#B5DD86"));
                 ((ActivityPreguntas) getActivity()).addAcierto();
             } else {
+                sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
+                sfx_mal.start();
                 checkboxC.setBackgroundColor(Color.parseColor("#CC7474"));
                 ((ActivityPreguntas) getActivity()).addFallo();
             }
