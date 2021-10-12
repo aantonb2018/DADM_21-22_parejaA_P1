@@ -13,6 +13,7 @@ public class Resultados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultados);
+        getSupportActionBar().hide();
     }
 
     public void volverMenu(View view){

@@ -43,6 +43,7 @@ public class ActivityPreguntas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
+        //getSupportActionBar().hide();
 
         leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
 

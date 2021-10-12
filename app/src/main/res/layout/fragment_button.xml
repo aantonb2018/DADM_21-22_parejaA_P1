@@ -71,9 +71,12 @@
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 3"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/button2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/buttonI"
