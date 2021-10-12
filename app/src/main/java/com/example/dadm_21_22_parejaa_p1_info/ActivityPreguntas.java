@@ -38,7 +38,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             R.drawable.image11,R.drawable.image12,R.drawable.image13,R.drawable.image14,R.drawable.image15,R.drawable.image16,
             R.drawable.image17,R.drawable.image18,R.drawable.image19,R.drawable.image20,R.drawable.image21,R.drawable.image22,
             R.drawable.image23,R.drawable.image24,R.drawable.image25,R.drawable.image26,R.drawable.image27,R.drawable.image28,
-            R.drawable.image29};
+            R.drawable.image29};//Array con las imagenes asociadas al trivial
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,19 +85,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }
         }
     }
-/*
-    private void mostrarPreguntas(){
-        grupoRespuestas.clearCheck(); //Limpia la respuesta seleccionada
 
-        pregunta.setText(preguntas[idxPregunta][0]); //Escribe la pregunta actual en la pantalla
-        for(int i = 0; i < idxRespuestas.length; i++){
-            RadioButton resp = (RadioButton) findViewById(idxRespuestas[i]);
-            resp.setText(preguntas[idxPregunta][i+1]); //Escribe la respuesta del indice correspondiente en la pantalla
-
-
-        }
-    }
-*/
     private void comprobarRespuesta(){
         int respuestaSelec = grupoRespuestas.getCheckedRadioButtonId(); //Recoge el id de la respuesta marcada
 
@@ -110,8 +98,7 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     private String[] randomizar(String[] aux)
     {
-        // If running on Java 6 or older, use `new Random()` on RHS here
-        //Random rnd = ThreadLocalRandom.current();
+        //Cambia aleatoriamente las posiciones de las preguntas y las iamgenes en sus arrays
         Random random = new Random();
         for (int i = aux.length - 1; i > 0; i--)
         {
@@ -162,10 +149,10 @@ public class ActivityPreguntas extends AppCompatActivity {
         idxPregunta++;
         pregunta.setText(idxPregunta + "/10");
 
-        if(idxPregunta < 10) {
+        if(idxPregunta < 10) {//Si no se esta en la ultima pregunta...
             FragmentTransaction fragTransaction = fragManager.beginTransaction();
             int fragType = 0 + (int) (Math.random() * 4);
-            switch (fragType) {
+            switch (fragType) {//Se escoge aleatoriamente un tipo de pregunta para la siguiente
                 case 0:
                     fragTransaction.replace(R.id.fragmentContainerView, new RadiobuttonFragment(), "FRAGMENT_QUESTION");
                     break;
@@ -183,10 +170,10 @@ public class ActivityPreguntas extends AppCompatActivity {
         }else{
             Intent resultado = new Intent(ActivityPreguntas.this, Resultados.class);
 
-            resultado.putExtra("nick2", nick);
-            resultado.putExtra("score", aciertos);
+            resultado.putExtra("nick2", nick);//Envia el nick del jugador a la siguiente actividad
+            resultado.putExtra("score", aciertos);//Envia la puntuacion a la siguiente actividad
 
-            startActivity(resultado);
+            startActivity(resultado);//Inicializa la actividad de resultados
             finish();
         }
     }

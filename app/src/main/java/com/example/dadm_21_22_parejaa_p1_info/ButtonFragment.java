@@ -8,19 +8,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.dadm_21_22_parejaa_p1_info.QuestionManager;
-import com.example.dadm_21_22_parejaa_p1_info.ActivityPreguntas;
-import com.example.dadm_21_22_parejaa_p1_info.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +26,6 @@ public class ButtonFragment extends Fragment {
             R.id.button0, R.id.button1, R.id.button2, R.id.button3
     };
 
-    public QuestionManager qM;
     private Button button[] = new Button[4];
     private TextView buttonQ;
     private ImageView buttonI;
@@ -90,7 +82,6 @@ public class ButtonFragment extends Fragment {
         buttonQ = (TextView) root.findViewById(R.id.buttonQ);
         buttonQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
-        //buttonI = (ImageView) root.findViewById(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
         buttonI = (ImageView) root.findViewById(R.id.buttonI);
         buttonI.setVisibility(View.VISIBLE);
         Resources rImages = getResources();
@@ -132,11 +123,13 @@ public class ButtonFragment extends Fragment {
 
     public void comprobarRespuesta(int respuestaSelec){
         if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
+            //Si la respuestaSeleccionada coincide con la almacenada en el array de soluciones...
             sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
             sfx_bien.start();
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#B5DD86"));
             ((ActivityPreguntas) getActivity()).addAcierto();
         }else{
+            //si no es el caso...
             sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
             sfx_mal.start();
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#CC7474"));
