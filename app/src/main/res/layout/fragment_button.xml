@@ -22,64 +22,61 @@
             app:layout_constraintBottom_toTopOf="@+id/guidelineButtonQ"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.7" />
 
         <Button
             android:id="@+id/button0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 0"
             app:layout_constraintBottom_toTopOf="@+id/guidelineButton0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButtonI" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonI" />
 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 1"
             app:layout_constraintBottom_toTopOf="@+id/guidelineButton1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButton0" />
+            app:layout_constraintTop_toTopOf="@+id/guidelineButton0" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 2"
             app:layout_constraintBottom_toTopOf="@+id/guidelineButton2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButton1" />
+            app:layout_constraintTop_toTopOf="@+id/guidelineButton1" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 3"
             app:layout_constraintBottom_toBottomOf="@+id/guidelineButton3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineButton2" />
+            app:layout_constraintTop_toTopOf="@+id/guidelineButton2" />
 
         <ImageView
             android:id="@+id/buttonI"
-            android:layout_width="173dp"
-            android:layout_height="166dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="20dp"
             android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/guidelineButtonI"

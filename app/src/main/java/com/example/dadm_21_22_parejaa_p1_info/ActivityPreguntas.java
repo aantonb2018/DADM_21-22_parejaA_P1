@@ -187,6 +187,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             resultado.putExtra("score", aciertos);
 
             startActivity(resultado);
+            finish();
         }
     }
 }
