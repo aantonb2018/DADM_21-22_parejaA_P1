@@ -18,8 +18,7 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/pregunta"
+        app:layout_constraintStart_toEndOf="@+id/guidelineMainVert2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -33,9 +32,8 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
         app:layout_constraintEnd_toEndOf="@+id/guidelineMainVert2"
-        app:layout_constraintEnd_toStartOf="@+id/fallo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/acierto"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMainVert2"
+        app:layout_constraintStart_toEndOf="@+id/guidelineMainVert1"
         app:layout_constraintStart_toStartOf="@+id/guidelineMainVert1"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,8 +47,7 @@
         android:textColor="#B5DD86"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor1"
-        app:layout_constraintEnd_toStartOf="@+id/pregunta"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMainVert1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,10 +55,10 @@
         android:id="@+id/fragmentContainerView"
         android:name="com.example.dadm_21_22_parejaa_p1_info.ButtonFragment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineMainVert2"
+        app:layout_constraintStart_toStartOf="@+id/guidelineMainVert1"
         app:layout_constraintTop_toBottomOf="@+id/guidelineMainHor3" />
 
     <androidx.constraintlayout.widget.Guideline
