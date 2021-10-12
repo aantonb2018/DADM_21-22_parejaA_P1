@@ -1,5 +1,8 @@
 package com.example.dadm_21_22_parejaa_p1_info;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -26,6 +30,7 @@ public class RadiobuttonFragment extends Fragment {
     private RadioButton radio[] = new RadioButton[4];
     private TextView radioQ;
     private Button radioC;
+    private ImageView radioI;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +81,12 @@ public class RadiobuttonFragment extends Fragment {
         radioQ = (TextView) root.findViewById(R.id.radioQ);
         radioQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
+        radioI = (ImageView) root.findViewById(R.id.radioI);
+        radioI.setVisibility(View.VISIBLE);
+        Resources rImages = getResources();
+        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
+        radioI.setImageDrawable(idImages);
+
         radio[0] = (RadioButton) root.findViewById(R.id.radio0);
 
         radio[1] = (RadioButton) root.findViewById(R.id.radio1);
@@ -108,8 +119,10 @@ public class RadiobuttonFragment extends Fragment {
 
         if(respuestaSelec != -1) {
             if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
+                radioC.setBackgroundColor(Color.parseColor("#B5DD86"));
                 ((ActivityPreguntas) getActivity()).addAcierto();
             } else {
+                radioC.setBackgroundColor(Color.parseColor("#CC7474"));
                 ((ActivityPreguntas) getActivity()).addFallo();
             }
         }

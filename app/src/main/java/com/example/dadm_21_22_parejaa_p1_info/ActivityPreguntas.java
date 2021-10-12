@@ -13,6 +13,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class ActivityPreguntas extends AppCompatActivity {
 
@@ -29,6 +31,13 @@ public class ActivityPreguntas extends AppCompatActivity {
     private int idxPregunta = 0; //Indice de la pregunta actual
     private int soluciones[]; //Array con los indices de las soluciones correctas del array de arrays preguntas
     int aciertos, fallos = 0;
+
+    private int[] imagenes = {R.drawable.image0, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
+            R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image8,R.drawable.image9,R.drawable.image10,
+            R.drawable.image11,R.drawable.image12,R.drawable.image13,R.drawable.image14,R.drawable.image15,R.drawable.image16,
+            R.drawable.image17,R.drawable.image18,R.drawable.image19,R.drawable.image20,R.drawable.image21,R.drawable.image22,
+            R.drawable.image23,R.drawable.image24,R.drawable.image25,R.drawable.image26,R.drawable.image27,R.drawable.image28,
+            R.drawable.image29};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,7 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     private void leerItems(){
         String auxPreguntas[] = getResources().getStringArray(R.array.test); //Obtenemos los items que son las preguntas y respuestas
+        auxPreguntas = randomizar(auxPreguntas);
         preguntas = new String[auxPreguntas.length][5];
         soluciones = new int[auxPreguntas.length];
         for(int i = 0; i < auxPreguntas.length; i++){
@@ -89,6 +99,28 @@ public class ActivityPreguntas extends AppCompatActivity {
         }
     }
 
+    private String[] randomizar(String[] aux)
+    {
+        // If running on Java 6 or older, use `new Random()` on RHS here
+        //Random rnd = ThreadLocalRandom.current();
+        Random random = new Random();
+        for (int i = aux.length - 1; i > 0; i--)
+        {
+            int index = random.nextInt(i + 1);
+            // Cambio
+            String textoTemp = aux[index];
+            int idTemp = imagenes[index];
+
+            aux[index] = aux[i];
+            imagenes[index] = imagenes[i];
+
+            aux[i] = textoTemp;
+            imagenes[i] = idTemp;
+        }
+
+        return aux;
+    }
+
     public String[][] getPreguntas(){
         return preguntas;
     }
@@ -99,6 +131,10 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     public int getIdxPregunta(){
         return idxPregunta;
+    }
+
+    public int[] getImagenes(){
+        return imagenes;
     }
 
     public void addAcierto(){

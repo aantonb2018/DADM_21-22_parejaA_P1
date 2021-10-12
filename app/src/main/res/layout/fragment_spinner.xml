@@ -10,11 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/spinnerI"
+            android:layout_width="173dp"
+            android:layout_height="166dp"
+            android:layout_marginTop="12dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerQ"
+            tools:src="@drawable/image0" />
+
         <TextView
             android:id="@+id/spinnerQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="48dp"
             android:fontFamily="@font/aldrich"
             android:text="Question"
             android:textAlignment="center"
@@ -29,23 +40,22 @@
             android:id="@+id/spinner"
             android:layout_width="407dp"
             android:layout_height="91dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="40dp"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerQ"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerI"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/spinnerC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="64dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="CONFIRMAR"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
     </androidx.constraintlayout.widget.ConstraintLayout>

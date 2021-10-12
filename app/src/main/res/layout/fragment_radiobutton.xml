@@ -14,7 +14,7 @@
             android:id="@+id/radioQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="52dp"
             android:fontFamily="@font/aldrich"
             android:text="Question"
             android:textAlignment="center"
@@ -25,14 +25,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/radioI"
+            android:layout_width="173dp"
+            android:layout_height="166dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioQ"
+            tools:src="@drawable/image0" />
+
         <RadioGroup
             android:id="@+id/radioG"
             android:layout_width="305dp"
             android:layout_height="243dp"
-            android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioQ">
+            app:layout_constraintTop_toBottomOf="@+id/radioI">
 
             <RadioButton
                 android:id="@+id/radio0"
@@ -69,18 +78,18 @@
                 android:text="RESPUESTA 3"
                 android:textColor="#E1DDDD"
                 android:textSize="24sp" />
+
         </RadioGroup>
 
         <Button
             android:id="@+id/radioC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="32dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="CONFIRMAR"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioG" />
     </androidx.constraintlayout.widget.ConstraintLayout>

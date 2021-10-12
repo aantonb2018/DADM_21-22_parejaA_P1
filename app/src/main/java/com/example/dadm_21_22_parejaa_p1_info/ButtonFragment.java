@@ -1,5 +1,8 @@
 package com.example.dadm_21_22_parejaa_p1_info;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +34,7 @@ public class ButtonFragment extends Fragment {
     public QuestionManager qM;
     private Button button[] = new Button[4];
     private TextView buttonQ;
+    private ImageView buttonI;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,6 +85,13 @@ public class ButtonFragment extends Fragment {
         buttonQ = (TextView) root.findViewById(R.id.buttonQ);
         buttonQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
+        //buttonI = (ImageView) root.findViewById(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
+        buttonI = (ImageView) root.findViewById(R.id.buttonI);
+        buttonI.setVisibility(View.VISIBLE);
+        Resources rImages = getResources();
+        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
+        buttonI.setImageDrawable(idImages);
+
         button[0] = (Button) root.findViewById(R.id.button0);
         button[0].setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -115,8 +127,10 @@ public class ButtonFragment extends Fragment {
 
     public void comprobarRespuesta(int respuestaSelec){
         if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
+            button[respuestaSelec].setBackgroundColor(Color.parseColor("#B5DD86"));
             ((ActivityPreguntas) getActivity()).addAcierto();
         }else{
+            button[respuestaSelec].setBackgroundColor(Color.parseColor("#CC7474"));
             ((ActivityPreguntas) getActivity()).addFallo();
         }
     }

@@ -10,6 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/checkboxI"
+            android:layout_width="173dp"
+            android:layout_height="166dp"
+            android:layout_marginTop="8dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxQ"
+            tools:src="@drawable/image0" />
+
         <TextView
             android:id="@+id/checkboxQ"
             android:layout_width="wrap_content"
@@ -24,20 +35,19 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.139" />
+            app:layout_constraintVertical_bias="0.102" />
 
         <CheckBox
             android:id="@+id/checkbox0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 0"
             android:textColor="#E1DDDD"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxQ" />
+            app:layout_constraintTop_toBottomOf="@+id/checkboxI" />
 
         <CheckBox
             android:id="@+id/checkbox1"

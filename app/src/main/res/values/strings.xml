@@ -22,9 +22,9 @@
         <item>Hawk también es conocido como...;El novio de Yona;*Thunder Beast;Fire Beast;El Traidor del Reino</item>
         <item>¿Cuál de estos personajes no es un Stardust Crusader?;Jotaro;Avdol;Polnareff;*Mista</item>
         <item>¿Por qué motivo Inuyasha es despreciado por su familia?;Por estar saliendo con Kagome;Por ser albino;*Por ser medio demonio;Por ser feo</item>
-        <item>¿Cuál es el Quirk de Deku?;One for One; All for One;*One for All;All for All</item>
+        <item>¿Cuál es el Quirk de Deku?;One for One;All for One;*One for All;All for All</item>
         <item>¿Cuántas bolas de dragon hay?;*Siete (7);Doce (12);Cinco (5);Seis (6)</item>
-        <item>¿Cómo se llama el demonio que vive dentro de Yuuji Itador?;Sakura;Sakuna; Sukura;*Sukuna</item>
+        <item>¿Cómo se llama el demonio que vive dentro de Yuuji Itador?;Sakura;Sakuna;Sukura;*Sukuna</item>
         <item>¿Quién fue el primer beso de Naruto?;Sakura;*Sasuke;Hinata;Tsunade</item>
         <item>¿Cuál es el nombre real de Darkness?;Elizabeth;Sayaka;*Lalatina;María del Carmen</item>
         <item>¿Cuál de estos ninjas pertence a Konoha?;Zabuza;*Shikamaru;Temari;Hidan</item>
@@ -34,9 +34,17 @@
         <item>¿Cuál es el nombre de villano de Shuichi Iguchi?;Mr Compress;*Spinner;Twice;Dabi</item>
         <item>¿Qué equipo de voleibol no tiene un animal como símbolo?;Karasuno;Shiratorizawa;Nekoma;*Aoba Josei</item>
         <item>¿Qué equipo no pertenece a Inazuma Eleven?;*New Team;Instituo Raimon;Royal Academy;Knights of Queen</item>
-        <item>¿Cuál de estos Digimon pertenece a los Royal Knights?;Leonmon;Negamon;Dynasmon;Angemon</item>
+        <item>¿Cuál de estos Digimon pertenece a los Royal Knights?;Leonmon;Negamon;*Dynasmon;Angemon</item>
         <item>¿Cuál de estos personajes no representa a un Pecado Capital?;Meliodas;*Elizabeth;Escanor;Diane</item>
-
+        <item>¿Cómo se llama este personaje?;Demon Slayer;Dragon Slayer;Monster Slayer;*Goblin Slayer</item>
+        <item>¿Quién es este personaje de Hunter X Hunter?;*Leorio;Gon;Kurapika;Killua</item>
+        <item>¿Cuál de estos personajes formó parte de los 5 Elementos?;Sebastian Rattengift;Dino Aquatro;*Alphonse Hangul;Sokar Was</item>
+        <item>¿Cuál es el titán de la imágen?;Titán Acorazado de Reiner Braun;Titán de Ataque de Eren Kruger;*Titán de Ataque de Eren Jaeger;Titán Bestia de Zeke Jaeger</item>
+        <item>¿¿Cómo se conoce a Kirito dentro de Sword Art Online?;El Duelista Oscuro;*El Espadachín Negro;El Caballero de la Noche;El Hacker Negro</item>
+        <item>¿A qué personaje de The Promised Neverland pertence este número?;*Emma;Ray;Norman;Isabella</item>
+        <item>¿Cuál es la técnica emblema del padre de Tanjiro?;Respiración del Agua;Respiración Animal;Respiración del Trueno;*Respiración Solar</item>
+        <item>¿Quién es la identidad real detrás de ChainsawMan?;Aki;Kishibe;*Denji;Kobeni</item>
+        <item>¿Cómo se llama este personaje de Promare?;Lio;*Galo;Galio;Leo</item>
     </array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

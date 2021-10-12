@@ -24,19 +24,20 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.102" />
+            app:layout_constraintVertical_bias="0.057" />
 
         <Button
             android:id="@+id/button0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="#000D80"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 0"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonQ" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonI" />
 
         <Button
             android:id="@+id/button1"
@@ -73,6 +74,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+        <ImageView
+            android:id="@+id/buttonI"
+            android:layout_width="173dp"
+            android:layout_height="166dp"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonQ"
+            tools:src="@drawable/image0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
