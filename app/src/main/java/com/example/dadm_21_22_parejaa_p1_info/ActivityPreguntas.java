@@ -17,6 +17,8 @@ import java.util.Random;
 
 public class ActivityPreguntas extends AppCompatActivity {
 
+    private String nick;
+
     private TextView pregunta; //Texto que muestra el indice de pregunta
     private TextView acierto;  //Texto que muestra el numero de aciertos
     private TextView fallo;    //Texto que muestra el numero de fallos
@@ -43,6 +45,11 @@ public class ActivityPreguntas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
         //getSupportActionBar().hide();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            nick = extras.getString("nick");
+        }
 
         leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
 
@@ -175,6 +182,10 @@ public class ActivityPreguntas extends AppCompatActivity {
             fragTransaction.commit();
         }else{
             Intent resultado = new Intent(ActivityPreguntas.this, Resultados.class);
+
+            resultado.putExtra("nick2", nick);
+            resultado.putExtra("score", aciertos);
+
             startActivity(resultado);
         }
     }

@@ -13,10 +13,12 @@
         android:layout_height="84dp"
         android:layout_marginBottom="36dp"
         android:backgroundTint="#000D80"
+        android:fontFamily="@font/aldrich"
+        android:onClick="volverJuego"
         android:text="Reiniciar test"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_volverMenu"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineResultHor2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -25,24 +27,13 @@
         android:layout_height="84dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#000D80"
+        android:fontFamily="@font/aldrich"
         android:onClick="volverMenu"
         android:text="Volver al menu principal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_restart"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineResultHor3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_restart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="247dp"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_volverMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"></LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -52,10 +43,63 @@
         android:fontFamily="@font/aldrich"
         android:gravity="center"
         android:text="@string/string_resultados"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineResultHor1" />
+
+    <TextView
+        android:id="@+id/puntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/aldrich"
+        android:text="NAME - XX/XX"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineResultHor1"
+        app:layout_constraintBottom_toTopOf="@+id/comentario"/>
+
+    <TextView
+        android:id="@+id/comentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Lore ipsum"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineResultHor2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puntuacion"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineResultHor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineResultHor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineResultHor3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

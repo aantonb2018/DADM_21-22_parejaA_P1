@@ -21,9 +21,9 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineRadioQ"/>
 
         <ImageView
             android:id="@+id/radioI"
@@ -32,7 +32,8 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioQ"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineRadioQ"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineRadioI"
             tools:src="@drawable/image0" />
 
         <RadioGroup
@@ -41,7 +42,8 @@
             android:layout_height="243dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioI">
+            app:layout_constraintTop_toBottomOf="@+id/guidelineRadioI"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineRadio0">
 
             <RadioButton
                 android:id="@+id/radio0"
@@ -49,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aldrich"
                 android:text="RESPUESTA 0"
-                android:textColor="#E1DDDD"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <RadioButton
@@ -58,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aldrich"
                 android:text="RESPUESTA 1"
-                android:textColor="#E1DDDD"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <RadioButton
@@ -67,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aldrich"
                 android:text="RESPUESTA 2"
-                android:textColor="#E1DDDD"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <RadioButton
@@ -76,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aldrich"
                 android:text="RESPUESTA 3"
-                android:textColor="#E1DDDD"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
         </RadioGroup>
@@ -91,6 +93,36 @@
             android:text="CONFIRMAR"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioG" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineRadio0"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineRadioB" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRadioQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRadioI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRadio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRadioB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

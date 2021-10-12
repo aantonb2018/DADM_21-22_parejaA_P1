@@ -18,7 +18,8 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerQ"
+            app:layout_constraintTop_toTopOf="@+id/guidelineSpinnerQ"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinnerI"
             tools:src="@drawable/image0" />
 
         <TextView
@@ -32,9 +33,9 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinnerQ"/>
 
         <Spinner
             android:id="@+id/spinner"
@@ -44,7 +45,8 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerI"
+            app:layout_constraintTop_toTopOf="@+id/guidelineSpinnerI"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinner0"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
@@ -57,6 +59,36 @@
             android:text="CONFIRMAR"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintTop_toTopOf="@+id/guidelineSpinner0"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinnerB" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineSpinnerQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineSpinnerI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineSpinner0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineSpinnerB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -39,6 +39,9 @@ public class MenuPrincipal extends AppCompatActivity {
                 else{
                     // en caso contrario, se pasa a la siguiente actividad
                     Intent empezar = new Intent(MenuPrincipal.this, ActivityPreguntas.class);
+
+                    empezar.putExtra("nick", (inputTexto.getText().toString()));
+
                     startActivity(empezar);
                 }
             }

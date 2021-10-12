@@ -18,7 +18,8 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxQ"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCheckQ"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheckI"
             tools:src="@drawable/image0" />
 
         <TextView
@@ -30,12 +31,10 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheckQ"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.102" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
             android:id="@+id/checkbox0"
@@ -43,11 +42,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 0"
-            android:textColor="#E1DDDD"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxI" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCheckI"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheck0"/>
 
         <CheckBox
             android:id="@+id/checkbox1"
@@ -56,11 +56,12 @@
             android:layout_marginTop="40dp"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 1"
-            android:textColor="#E1DDDD"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox0" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCheck0"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheck1" />
 
         <CheckBox
             android:id="@+id/checkbox2"
@@ -69,12 +70,12 @@
             android:layout_marginTop="40dp"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 2"
-            android:textColor="#E1DDDD"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox1" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCheck1"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheck2" />
 
         <CheckBox
             android:id="@+id/checkbox3"
@@ -83,12 +84,12 @@
             android:layout_marginTop="40dp"
             android:fontFamily="@font/aldrich"
             android:text="ANSWER 3"
-            android:textColor="#E1DDDD"
+            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox2" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCheck2"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheck3" />
 
         <Button
             android:id="@+id/checkboxC"
@@ -100,6 +101,57 @@
             android:text="CONFIRMAR"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox3" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCheck3"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineCheckB" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheckQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheckI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheck0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheck1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheck2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheck3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCheckB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
