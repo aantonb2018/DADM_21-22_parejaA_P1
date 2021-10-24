@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MenuPrincipal extends AppCompatActivity {
 
     EditText inputTexto;
-    Button btn;
+    ImageButton btn;
     MediaPlayer sfx;
 
     @Override
@@ -24,7 +25,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
         // Inicializacion input y botón
         inputTexto = (EditText) findViewById(R.id.txt_nombre);
-        btn = (Button) findViewById(R.id.btn_empezar);
+        btn = (ImageButton) findViewById(R.id.btn_jugar);
 
         // Cuando se pulsa sobre el botón "empezar" se llama a este evento
         btn.setOnClickListener(new View.OnClickListener() {
