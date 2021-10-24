@@ -8,12 +8,17 @@ import android.graphics.Color;
 import android.media.MediaParser;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Resultados extends AppCompatActivity {
 
     private String nick;
     private int score;
+
+    private ImageButton ib_reiniciar;
+    private ImageButton ib_volverMenu;
 
     private TextView comentario;
     private TextView puntuacion;
@@ -22,6 +27,8 @@ public class Resultados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultados);
+
+        // ESCONDER TITULO DE ACTIVIDAD
         getSupportActionBar().hide();
 
         Bundle extras = getIntent().getExtras();
@@ -30,8 +37,13 @@ public class Resultados extends AppCompatActivity {
             score= extras.getInt("score");
         }
 
+        // LOCALIZAR ELEMENTOS -----------------------------------------
         puntuacion = (TextView) findViewById(R.id.puntuacion);
         comentario = (TextView) findViewById(R.id.comentario);
+
+        ib_reiniciar = (ImageButton) findViewById(R.id.btn_restart);
+        ib_volverMenu = (ImageButton) findViewById(R.id.btn_volverMenu);
+        // -------------------------------------------------------------
 
         puntuacion.setText(nick + " - " + score + "/10");
 
@@ -49,22 +61,29 @@ public class Resultados extends AppCompatActivity {
             comentario.setTextColor(Color.parseColor("#FF000000"));
         }
 
+        // Cuando se pulsa sobre el botón "reiniciar" se llama a este evento
+        ib_reiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent volverJuego = new Intent(Resultados.this,ActivityPreguntas.class);
+
+                volverJuego.putExtra("nick", nick);
+
+                startActivity(volverJuego);
+                finish();
+            }
+        });
+
+        // Cuando se pulsa sobre el botón "volver al menú" se llama a este evento
+        ib_volverMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent volverMenu = new Intent(Resultados.this,MenuPrincipal.class);
+                startActivity(volverMenu);
+                finish();
+            }
+        });
+
     }
-
-    public void volverMenu(View view){
-        Intent volverMenu = new Intent(this,MenuPrincipal.class);
-        startActivity(volverMenu);
-        finish();
-    }
-
-    public void volverJuego(View view){
-        Intent volverJuego = new Intent(this,ActivityPreguntas.class);
-
-        volverJuego.putExtra("nick", nick);
-
-        startActivity(volverJuego);
-        finish();
-    }
-
 
 }

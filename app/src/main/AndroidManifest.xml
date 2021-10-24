@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DADM_2122_parejaA_P1_info">
         <activity
+            android:name=".Ajustes"
+            android:exported="true" />
+        <activity
             android:name=".Resultados"
             android:exported="true" />
         <activity
@@ -23,7 +26,7 @@
         </activity>
         <activity
             android:name=".ActivityPreguntas"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
