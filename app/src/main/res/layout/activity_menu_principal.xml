@@ -64,6 +64,7 @@
             android:id="@+id/txt_nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:hint="Introduce tu nombre"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,30 +79,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/boton_jugar"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:srcCompat="@drawable/boton_jugar" />
 
         <ImageButton
             android:id="@+id/btn_ajustes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/boton_ajustes"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </LinearLayout>
+            app:srcCompat="@drawable/boton_ajustes" />
 
-    <Button
-        android:id="@+id/btn_empezar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#000D80"
-        android:fontFamily="@font/aldrich"
-        android:text="EMPEZAR"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineMenuHor3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineMenuHor2" />
+    </LinearLayout>
 
 </LinearLayout>
