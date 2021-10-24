@@ -51,20 +51,11 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_resultados"
+        <ImageView
+            android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/kerokero"
-            android:gravity="center"
-            android:text="@string/string_resultados"
-            android:textColor="@color/black"
-            android:textSize="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineResultHor1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.78" />
+            app:srcCompat="@drawable/resultados" />
 
         <TextView
             android:id="@+id/puntuacion"
