@@ -9,6 +9,10 @@
     <string name="prev">Previous</string>
     <string name="introducirNombre">Introduce tu nombre</string>
     <string name="string_resultados">RESULTADOS</string>
+    <string name="string_numPreg">Número de preguntas</string>
+    <string name="string_Volumen">Ajustar volumen</string>
+    <string name="string_ajustes">AJUSTES</string>
+
 
     <array name="test">
         <item>¿Cuál es el sueño de Luffy?;Encontrar a su padre;*Ser el Rey de los Piratas;Casarse

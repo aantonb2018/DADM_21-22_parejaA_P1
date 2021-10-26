@@ -12,18 +12,90 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/kerokero"
-        android:text="AJUSTES"
-        android:textColor="@color/black"
-        android:textAlignment="center"
         android:layout_marginTop="25dp"
-        android:textSize="75dp" />
+        android:background="#000000"
+        android:fontFamily="@font/kerokero"
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
+        android:textSize="75dp"
+        tools:text="@string/string_ajustes" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="482dp"
-        app:srcCompat="@drawable/imagen_apoyo_ajustes" />
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#00FFFFFF">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="482dp"
+            app:srcCompat="@drawable/imagen_apoyo_ajustes" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_numPreg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kerokero"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textSize="20dp"
+                tools:text="@string/string_numPreg" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_numPreg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioBut_cinco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5" />
+
+                <RadioButton
+                    android:id="@+id/radioBut_diez"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10" />
+
+                <RadioButton
+                    android:id="@+id/radioBut_quince"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="15" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txt_volumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kerokero"
+                android:textSize="20dp"
+                android:textColor="@color/purple_200"
+                android:paddingTop="20dp"
+                android:textAlignment="center"
+                tools:text="@string/string_Volumen" />
+
+            <SeekBar
+                android:id="@+id/barraVolumen"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -33,4 +105,5 @@
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/boton_volvermenu" />
+
 </LinearLayout>
