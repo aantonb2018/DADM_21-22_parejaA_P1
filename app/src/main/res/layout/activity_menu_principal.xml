@@ -48,12 +48,8 @@
     <ImageView
         android:id="@+id/img_titulo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="306dp"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineMenuHor1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/titulo" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,28 +69,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_jugar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/boton_jugar" />
+            android:background="#FF9800"
+            android:fontFamily="@font/kerokero"
+            android:text="Button"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            tools:text="@string/string_empezar" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_ajustes"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/boton_ajustes" />
+            android:background="#FF9800"
+            android:fontFamily="@font/kerokero"
+            android:text="Button"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            tools:text="@string/string_ajustes" />
 
     </LinearLayout>
 

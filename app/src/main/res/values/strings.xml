@@ -12,6 +12,8 @@
     <string name="string_numPreg">Número de preguntas</string>
     <string name="string_Volumen">Ajustar volumen</string>
     <string name="string_ajustes">AJUSTES</string>
+    <string name="string_empezar">JUGAR</string>
+
 
 
     <array name="test">

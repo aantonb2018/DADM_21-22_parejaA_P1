@@ -15,7 +15,8 @@ import android.widget.Toast;
 public class MenuPrincipal extends AppCompatActivity {
 
     EditText inputTexto;
-    ImageButton btn;
+    Button btn_empezar;
+    Button btn_config;
     MediaPlayer sfx;
 
     @Override
@@ -27,12 +28,32 @@ public class MenuPrincipal extends AppCompatActivity {
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // Inicializacion input y botón
+        // Inicializacion input y botones
         inputTexto = (EditText) findViewById(R.id.txt_nombre);
-        btn = (ImageButton) findViewById(R.id.btn_jugar);
+        btn_empezar = (Button) findViewById(R.id.btn_jugar);
+        btn_config = (Button) findViewById(R.id.btn_ajustes);
 
-        // Cuando se pulsa sobre el botón "empezar" se llama a este evento
-        btn.setOnClickListener(new View.OnClickListener() {
+        // definición de evento onClick del botón "JUGAR"
+        btn_empezar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // si el campo de input está vacío se lanza un mensaje avisando de que no se ha introducido un nombre
+                if ((inputTexto.getText().toString()).isEmpty()){
+                    Toast.makeText(MenuPrincipal.this,"No has introducido un nombre", Toast.LENGTH_LONG).show();
+
+                    // se pasa a la siguiente actividad
+                    Intent empezar = new Intent(MenuPrincipal.this, ActivityPreguntas.class);
+
+                    empezar.putExtra("nick", (inputTexto.getText().toString()));
+
+                    startActivity(empezar);
+                }
+            }
+        });
+
+        // definición de evento onClick del botón "AJUSTES"
+        btn_config.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -40,14 +61,11 @@ public class MenuPrincipal extends AppCompatActivity {
                 // si el campo de input está vacío se lanza un mensaje pidiendo el nombre
                 if ((inputTexto.getText().toString()).isEmpty()){
                     Toast.makeText(MenuPrincipal.this,"Introduce un nombre", Toast.LENGTH_LONG).show();
-                }
-                else{
+
                     // en caso contrario, se pasa a la siguiente actividad
-                    Intent empezar = new Intent(MenuPrincipal.this, ActivityPreguntas.class);
-
-                    empezar.putExtra("nick", (inputTexto.getText().toString()));
-
-                    startActivity(empezar);
+                    Intent ajustes = new Intent(MenuPrincipal.this, Ajustes.class);
+                    ajustes.putExtra("nick", (inputTexto.getText().toString()));
+                    startActivity(ajustes);
                 }
             }
         });
