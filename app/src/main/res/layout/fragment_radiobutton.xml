@@ -3,127 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".RadiobuttonFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/radioQ"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/aldrich"
-            android:text="Question"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineRadioQ"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.7" />
-
-        <ImageView
-            android:id="@+id/radioI"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineRadioI"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineRadioQ"
-            tools:src="@drawable/image0" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <RadioGroup
-            android:id="@+id/radioG"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineRadio0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineRadioI">
-
-            <RadioButton
-                android:id="@+id/radio0"
+            <TextView
+                android:id="@+id/radioQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aldrich"
-                android:text="RESPUESTA 0"
+                android:fontFamily="@font/kerokero"
+                android:padding="15dp"
+                android:text="Question"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="30dp" />
 
-            <RadioButton
-                android:id="@+id/radio1"
+            <ImageView
+                android:id="@+id/radioI"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:visibility="visible"
+                tools:src="@drawable/image0" />
+
+            <RadioGroup
+                android:id="@+id/radioG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aldrich"
-                android:text="RESPUESTA 1"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:padding="20dp">
 
-            <RadioButton
-                android:id="@+id/radio2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aldrich"
-                android:text="RESPUESTA 2"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                <RadioButton
+                    android:id="@+id/radio0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kerokero"
+                    android:text="RESPUESTA 0"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-            <RadioButton
-                android:id="@+id/radio3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aldrich"
-                android:text="RESPUESTA 3"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kerokero"
+                    android:text="RESPUESTA 1"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kerokero"
+                    android:text="RESPUESTA 2"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/radioC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#000D80"
-            android:fontFamily="@font/aldrich"
-            android:text="CONFIRMAR"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineRadioB"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelineRadio0" />
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kerokero"
+                    android:text="RESPUESTA 3"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineRadioQ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineRadioI"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineRadio0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineRadioB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
+            </RadioGroup>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

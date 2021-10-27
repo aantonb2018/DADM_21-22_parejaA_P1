@@ -30,7 +30,6 @@ public class RadiobuttonFragment extends Fragment {
 
     private RadioButton radio[] = new RadioButton[4];
     private TextView radioQ;
-    private Button radioC;
     private ImageView radioI;
 
     MediaPlayer sfx_mal;
@@ -77,34 +76,51 @@ public class RadiobuttonFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_radiobutton, container, false);
 
+        // PREGUNTA ----------------------------------------------
         radioQ = (TextView) root.findViewById(R.id.radioQ);
         radioQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
+        // IMAGEN ------------------------------------------------
         radioI = (ImageView) root.findViewById(R.id.radioI);
         radioI.setVisibility(View.VISIBLE);
         Resources rImages = getResources();
         Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
         radioI.setImageDrawable(idImages);
 
+        // RADIOBUTTONS ----------------------------------------------
         radio[0] = (RadioButton) root.findViewById(R.id.radio0);
-
         radio[1] = (RadioButton) root.findViewById(R.id.radio1);
-
         radio[2] = (RadioButton) root.findViewById(R.id.radio2);
-
         radio[3] = (RadioButton) root.findViewById(R.id.radio3);
 
-        radioC = (Button) root.findViewById(R.id.radioC);
-        radioC.setOnClickListener(new View.OnClickListener(){
+        // ONCLICKS de los radiobutton ------------------------------
+        // Cuando se pulsa sobre uno se comprueba si es correcto o no y se pasa
+        // directamente a la siguiente pregunta
+        radio[0].setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 comprobarRespuesta();
             }
         });
+        radio[1].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                comprobarRespuesta();
+            }
+        });
+        radio[2].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                comprobarRespuesta();
+            }
+        });
+        radio[3].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                comprobarRespuesta();
+            }
+        });
+
         mostrarPreguntas();
 
         return root;
@@ -125,12 +141,10 @@ public class RadiobuttonFragment extends Fragment {
             if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
                 sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
                 sfx_bien.start();
-                radioC.setBackgroundColor(Color.parseColor("#B5DD86"));
                 ((ActivityPreguntas) getActivity()).addAcierto();
             } else {
                 sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
                 sfx_mal.start();
-                radioC.setBackgroundColor(Color.parseColor("#CC7474"));
                 ((ActivityPreguntas) getActivity()).addFallo();
             }
         }

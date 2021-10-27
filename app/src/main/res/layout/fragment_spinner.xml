@@ -3,90 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".SpinnerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/spinnerI"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinnerI"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelineSpinnerQ"
-            tools:src="@drawable/image0" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/spinnerQ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/aldrich"
-            android:text="Question"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinnerQ"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.7" />
+            <TextView
+                android:id="@+id/spinnerQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kerokero"
+                android:padding="15dp"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="407dp"
-            android:layout_height="91dp"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinner0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelineSpinnerI"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <ImageView
+                android:id="@+id/spinnerI"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:visibility="visible"
+                tools:src="@drawable/image0" />
 
-        <Button
-            android:id="@+id/spinnerC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#000D80"
-            android:fontFamily="@font/aldrich"
-            android:text="CONFIRMAR"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineSpinnerB"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelineSpinner0" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineSpinnerQ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineSpinnerI"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineSpinner0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineSpinnerB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:paddingHorizontal="15dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

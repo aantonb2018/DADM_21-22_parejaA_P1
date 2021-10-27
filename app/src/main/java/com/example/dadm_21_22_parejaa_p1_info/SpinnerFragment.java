@@ -75,28 +75,30 @@ public class SpinnerFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_spinner, container, false);
 
+        // PREGUNTA ----------------------------------------------
         spinnerQ = (TextView) root.findViewById(R.id.spinnerQ);
         spinnerQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
+        // IMAGEN ------------------------------------------------
         spinnerI = (ImageView) root.findViewById(R.id.spinnerI);
         spinnerI.setVisibility(View.VISIBLE);
         Resources rImages = getResources();
         Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
         spinnerI.setImageDrawable(idImages);
 
+        // SPINNER -----------------------------------------
         spinner = (Spinner) root.findViewById(R.id.spinner);
 
-        spinnerC = (Button) root.findViewById(R.id.spinnerC);
-        spinnerC.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                comprobarRespuesta();
-            }
-        });
+        // PROGRAMAR QUE NO SE TENGA QUE HACER UN BOTON PARA CONFIRMAR QUE EN ESTO NO SE XD
+//        spinner.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View view){
+//                comprobarRespuesta();
+//            }
+//        });
         mostrarPreguntas();
 
         return root;
@@ -119,12 +121,11 @@ public class SpinnerFragment extends Fragment {
         if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
             sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
             sfx_bien.start();
-            spinnerC.setBackgroundColor(Color.parseColor("#B5DD86"));
             ((ActivityPreguntas) getActivity()).addAcierto();
+
         } else {
             sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
             sfx_mal.start();
-            spinnerC.setBackgroundColor(Color.parseColor("#CC7474"));
             ((ActivityPreguntas) getActivity()).addFallo();
         }
     }

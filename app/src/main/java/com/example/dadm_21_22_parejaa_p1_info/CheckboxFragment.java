@@ -29,7 +29,6 @@ public class CheckboxFragment extends Fragment {
 
     private CheckBox checkbox[] = new CheckBox[4];
     private TextView checkboxQ;
-    private Button checkboxC;
     private ImageView checkboxI;
 
     MediaPlayer sfx_mal;
@@ -76,34 +75,51 @@ public class CheckboxFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_checkbox, container, false);
 
+        // PREGUNTA ----------------------------------------------
         checkboxQ = (TextView) root.findViewById(R.id.checkboxQ);
         checkboxQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
+        // IMAGEN ------------------------------------------------
         checkboxI = (ImageView) root.findViewById(R.id.checkboxI);
         checkboxI.setVisibility(View.VISIBLE);
         Resources rImages = getResources();
         Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
         checkboxI.setImageDrawable(idImages);
 
+        // CHECKBOXS ----------------------------------------------
         checkbox[0] = (CheckBox) root.findViewById(R.id.checkbox0);
-
         checkbox[1] = (CheckBox) root.findViewById(R.id.checkbox1);
-
         checkbox[2] = (CheckBox) root.findViewById(R.id.checkbox2);
-
         checkbox[3] = (CheckBox) root.findViewById(R.id.checkbox3);
 
-        checkboxC = (Button) root.findViewById(R.id.checkboxC);
-        checkboxC.setOnClickListener(new View.OnClickListener(){
+        // ONCLICKS de los checkbox ------------------------------
+        // Cuando se pulsa sobre uno se comprueba si es correcto o no y se pasa
+        // directamente a la siguiente pregunta
+        checkbox[0].setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 comprobarRespuesta();
             }
         });
+        checkbox[1].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                comprobarRespuesta();
+            }
+        });
+        checkbox[2].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                comprobarRespuesta();
+            }
+        });
+        checkbox[3].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                comprobarRespuesta();
+            }
+        });
+
         mostrarPreguntas();
 
         return root;
@@ -127,12 +143,10 @@ public class CheckboxFragment extends Fragment {
             if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
                 sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
                 sfx_bien.start();
-                checkboxC.setBackgroundColor(Color.parseColor("#B5DD86"));
                 ((ActivityPreguntas) getActivity()).addAcierto();
             } else {
                 sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
                 sfx_mal.start();
-                checkboxC.setBackgroundColor(Color.parseColor("#CC7474"));
                 ((ActivityPreguntas) getActivity()).addFallo();
             }
         }
