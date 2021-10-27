@@ -66,29 +66,29 @@
                 android:id="@+id/btn_restart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#FF9800"
+                app:backgroundTint="@color/naranja"
                 android:fontFamily="@font/kerokero"
-                android:text="Button"
+                android:padding="10dp"
+                android:text="@string/string_restart"
                 android:textColor="@color/white"
                 android:textSize="30dp"
-                tools:text="@string/string_restart"
-                android:padding="10dp"
-                android:layout_margin="10dp"/>
+                tools:text="@string/string_restart" />
 
             <Button
                 android:id="@+id/btn_volverMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#FF9800"
+                app:backgroundTint="@color/naranja"
                 android:fontFamily="@font/kerokero"
-                android:text="Button"
+                android:padding="10dp"
+                android:text="@string/string_volverMenu"
                 android:textColor="@color/white"
                 android:textSize="30dp"
-                tools:text="@string/string_volverMenu"
-                android:padding="10dp"
-                android:layout_margin="10dp"/>
+                tools:text="@string/string_volverMenu" />
 
         </LinearLayout>
 
@@ -96,15 +96,15 @@
             android:id="@+id/btn_clasif_resultados"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:background="#FF9800"
+            app:backgroundTint="@color/naranja"
             android:fontFamily="@font/kerokero"
             android:padding="10dp"
-            android:text="Button"
+            android:text="@string/string_clasif"
             android:textColor="@color/white"
             android:textSize="30dp"
-            tools:text="@string/string_clasif"
-            android:layout_gravity="center_horizontal"/>
+            tools:text="@string/string_clasif" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

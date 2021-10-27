@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.media.MediaParser;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +18,8 @@ public class Resultados extends AppCompatActivity {
     private String nick;
     private int score;
 
-    private ImageButton ib_reiniciar;
-    private ImageButton ib_volverMenu;
+    private Button ib_reiniciar;
+    private Button ib_volverMenu;
 
     private TextView comentario;
     private TextView puntuacion;
@@ -41,8 +42,8 @@ public class Resultados extends AppCompatActivity {
         puntuacion = (TextView) findViewById(R.id.puntuacion);
         comentario = (TextView) findViewById(R.id.comentario);
 
-        ib_reiniciar = (ImageButton) findViewById(R.id.btn_restart);
-        ib_volverMenu = (ImageButton) findViewById(R.id.btn_volverMenu);
+        ib_reiniciar = (Button) findViewById(R.id.btn_restart);
+        ib_volverMenu = (Button) findViewById(R.id.btn_volverMenu);
         // -------------------------------------------------------------
 
         puntuacion.setText(nick + " - " + score + "/10");

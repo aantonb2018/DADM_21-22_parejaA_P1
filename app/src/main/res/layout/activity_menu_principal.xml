@@ -53,12 +53,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#FF9800"
+                app:backgroundTint="@color/naranja"
                 android:fontFamily="@font/kerokero"
                 android:text="@string/string_empezar"
                 android:textColor="@color/white"
                 android:textSize="30dp"
-                android:theme="@style/color_naranja"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/string_empezar" />
 
@@ -68,12 +67,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@color/naranja"
+                app:backgroundTint="@color/naranja"
                 android:fontFamily="@font/kerokero"
                 android:text="@string/string_ajustes"
                 android:textColor="@color/white"
                 android:textSize="30dp"
-                android:theme="@style/color_naranja"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/string_ajustes" />
 
@@ -85,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:background="#FF9800"
+            app:backgroundTint="@color/naranja"
             android:fontFamily="@font/kerokero"
             android:padding="10dp"
             android:text="@string/string_clasif"

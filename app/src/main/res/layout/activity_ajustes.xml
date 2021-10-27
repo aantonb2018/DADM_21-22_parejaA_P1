@@ -101,14 +101,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:background="@color/black"
+            app:backgroundTint="@color/black"
             android:fontFamily="@font/kerokero"
             android:padding="10dp"
             android:text="@string/string_volverMenu"
             android:textColor="@color/white"
             android:textSize="30dp"
-            tools:text="@string/string_volverMenu"
-            android:theme="@style/color_negro"/>
+            tools:text="@string/string_volverMenu"/>
 
     </LinearLayout>
 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="color_naranja" parent="Theme.AppCompat">
-        <item name="colorAccent">@color/naranja</item>
-    </style>
-    <style name="color_negro" parent="Theme.AppCompat">
-        <item name="colorAccent">@color/black</item>
-    </style>
-</resources>
