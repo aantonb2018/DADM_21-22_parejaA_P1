@@ -7,12 +7,17 @@
     <string name="next">Next</string>
     <string name="finish">Finish</string>
     <string name="prev">Previous</string>
+
+    <!-- ESPAÑOL -->
     <string name="introducirNombre">Introduce tu nombre</string>
     <string name="string_resultados">RESULTADOS</string>
     <string name="string_numPreg">Número de preguntas</string>
     <string name="string_Volumen">Ajustar volumen</string>
     <string name="string_ajustes">AJUSTES</string>
     <string name="string_empezar">JUGAR</string>
+    <string name="string_clasif">CLASIFICACIÓN</string>
+    <string name="string_restart">RETOMAR TEST</string>
+    <string name="string_volverMenu">VOLVER AL MENU</string>
 
 
 

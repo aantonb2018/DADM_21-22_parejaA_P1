@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,53 +9,22 @@
     tools:context=".Resultados">
 
     <!-- ICONOS -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/img_sharingan_resultados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_sharingan" />
-
-        <ImageView
-            android:id="@+id/img_pokemon_resultados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_pokeball" />
-
-        <ImageView
-            android:id="@+id/img_jojo_resultados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_jojo" />
-
-        <ImageView
-            android:id="@+id/img_onepiece_resultados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_luffy" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/img_resultados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/resultados" />
+            app:srcCompat="@drawable/resultados"
+            android:padding="30dp"/>
 
         <TextView
             android:id="@+id/puntuacion"
@@ -89,51 +58,53 @@
         <LinearLayout
             android:id="@+id/linearlayout_botones"
             android:layout_width="match_parent"
-            android:layout_height="86dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="30dp">
 
-            <ImageButton
+            <Button
                 android:id="@+id/btn_restart"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#00FFFFFF"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/boton_reiniciar" />
+                android:background="#FF9800"
+                android:fontFamily="@font/kerokero"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                tools:text="@string/string_restart"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
 
-            <ImageButton
+            <Button
                 android:id="@+id/btn_volverMenu"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#00FFFFFF"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/boton_volvermenu" />
+                android:background="#FF9800"
+                android:fontFamily="@font/kerokero"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                tools:text="@string/string_volverMenu"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_clasif_resultados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#FF9800"
+            android:fontFamily="@font/kerokero"
+            android:padding="10dp"
+            android:text="Button"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            tools:text="@string/string_clasif"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineResultHor1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineResultHor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineResultHor3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

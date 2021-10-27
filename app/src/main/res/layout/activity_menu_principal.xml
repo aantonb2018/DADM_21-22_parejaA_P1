@@ -1,102 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/fondo_menu_principal"
     android:orientation="vertical"
     tools:context=".MenuPrincipal">
 
     <!-- ICONOS -->
     <LinearLayout
-        android:id="@+id/layout_iconos"
         android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/sharingan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_sharingan" />
-
-        <ImageView
-            android:id="@+id/pokeball"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_pokeball" />
-
-        <ImageView
-            android:id="@+id/jojo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_jojo" />
-
-        <ImageView
-            android:id="@+id/onepiece"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/icono_luffy" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/img_titulo"
-        android:layout_width="match_parent"
-        android:layout_height="306dp"
-        android:contentDescription="TODO"
-        app:srcCompat="@drawable/titulo" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/txt_nombre"
+            android:id="@+id/img_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:hint="Introduce tu nombre..."
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:contentDescription="TODO"
+            android:paddingHorizontal="15dp"
+            app:srcCompat="@drawable/titulo" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/txt_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:hint="Introduce tu nombre..."
+                android:padding="10dp"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_jugar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#FF9800"
+                android:fontFamily="@font/kerokero"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/string_empezar" />
+
+            <Button
+                android:id="@+id/btn_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#FF9800"
+                android:fontFamily="@font/kerokero"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/string_ajustes" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btn_jugar"
-            android:layout_width="match_parent"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
             android:background="#FF9800"
             android:fontFamily="@font/kerokero"
+            android:padding="10dp"
             android:text="Button"
             android:textColor="@color/white"
             android:textSize="30dp"
-            tools:text="@string/string_empezar" />
-
-        <Button
-            android:id="@+id/btn_ajustes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#FF9800"
-            android:fontFamily="@font/kerokero"
-            android:text="Button"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            tools:text="@string/string_ajustes" />
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/string_clasif" />
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
