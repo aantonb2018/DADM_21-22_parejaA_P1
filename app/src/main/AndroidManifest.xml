@@ -10,12 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DADM_2122_parejaA_P1_info">
         <activity
-            android:name=".Ajustes"
-            android:exported="true" />
-        <activity
-            android:name=".Resultados"
-            android:exported="true" />
-        <activity
             android:name=".MenuPrincipal"
             android:exported="true">
             <intent-filter>
@@ -24,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Ajustes"
+            android:exported="true" />
+
+        <activity
+            android:name=".Resultados"
+            android:exported="true" />
+
         <activity
             android:name=".ActivityPreguntas"
             android:exported="true" />

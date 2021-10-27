@@ -18,7 +18,7 @@
     <string name="string_clasif">CLASIFICACIÓN</string>
     <string name="string_restart">RETOMAR TEST</string>
     <string name="string_volverMenu">VOLVER AL MENU</string>
-
+    <string name="string_hint">Introduce tu nombre...</string>
 
 
     <array name="test">

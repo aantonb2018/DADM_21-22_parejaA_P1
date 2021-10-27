@@ -22,7 +22,7 @@
             android:id="@+id/img_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="TODO"
+            android:contentDescription="imagen titulo"
             android:paddingHorizontal="15dp"
             app:srcCompat="@drawable/titulo" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:hint="Introduce tu nombre..."
+                android:hint="@string/string_hint"
                 android:padding="10dp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -55,9 +55,10 @@
                 android:layout_weight="1"
                 android:background="#FF9800"
                 android:fontFamily="@font/kerokero"
-                android:text="Button"
+                android:text="@string/string_empezar"
                 android:textColor="@color/white"
                 android:textSize="30dp"
+                android:theme="@style/color_naranja"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/string_empezar" />
 
@@ -67,11 +68,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#FF9800"
+                android:background="@color/naranja"
                 android:fontFamily="@font/kerokero"
-                android:text="Button"
+                android:text="@string/string_ajustes"
                 android:textColor="@color/white"
                 android:textSize="30dp"
+                android:theme="@style/color_naranja"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/string_ajustes" />
 
@@ -86,7 +88,7 @@
             android:background="#FF9800"
             android:fontFamily="@font/kerokero"
             android:padding="10dp"
-            android:text="Button"
+            android:text="@string/string_clasif"
             android:textColor="@color/white"
             android:textSize="30dp"
             tools:ignore="TextContrastCheck"
