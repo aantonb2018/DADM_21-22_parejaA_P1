@@ -8,16 +8,16 @@ import java.util.List;
 
 public class RepositorioPreguntas {
 
-    private PreguntasDAO mPreguntasDAO;
-    private LiveData<List<TablaPreguntas>> mTodasPreguntas;
+    private PreguntasDAO PreguntasDAO_repo;
+    private LiveData<List<TablaPreguntas>> todasPreguntas_repo;
 
     public RepositorioPreguntas(Application app){
         PreguntasBD bd = PreguntasBD.getInstance(app);
-        mPreguntasDAO = bd.palabraDAO();
-        mTodasPreguntas = mPreguntasDAO.todasPreguntas();
+        PreguntasDAO_repo = bd.palabraDAO();
+        todasPreguntas_repo = PreguntasDAO_repo.todasPreguntas();
     }
 
-    public LiveData<List<TablaPreguntas>> getmTodasPreguntas(){
-        return mTodasPreguntas;
+    public LiveData<List<TablaPreguntas>> get_todasPreguntasREPO(){
+        return todasPreguntas_repo;
     }
 }

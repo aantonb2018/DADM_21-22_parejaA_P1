@@ -4,16 +4,17 @@ package com.example.dadm_21_22_parejaa_p1_info;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -58,6 +59,15 @@ public class ActivityPreguntas extends AppCompatActivity {
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        viewModelPreguntas = ViewModelProviders.of(this).get(ViewModelPreguntas.class);
+        viewModelPreguntas.get_todasPreguntasVIEWMODEL().observe(this, new Observer<List<TablaPreguntas>>() {
+            @Override
+            public void onChanged(List<TablaPreguntas> preguntas) {
+
+                fetchPreguntas(preguntas);
+            }
+        });
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             nick = extras.getString("nick");
@@ -76,6 +86,17 @@ public class ActivityPreguntas extends AppCompatActivity {
 
         fragManager = getSupportFragmentManager();
         fragManager.beginTransaction().replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+    }
+
+    private void fetchPreguntas(List<TablaPreguntas> preguntas){
+
+        listaPreguntas = preguntas;
+
+        Collections.shuffle(listaPreguntas);
+
+        preguntaActual = listaPreguntas.get(pregID);
+
+
     }
 
     private void leerItems(){

@@ -9,16 +9,16 @@ import java.util.List;
 public class ViewModelPreguntas extends AndroidViewModel {
 
     private RepositorioPreguntas repositorio;
-    private LiveData<List<TablaPreguntas>> _todasPreguntas;
+    private LiveData<List<TablaPreguntas>> todasPreguntasVIEWMODEL;
 
     public ViewModelPreguntas(Application application) {
         super(application);
 
         repositorio = new RepositorioPreguntas(application);
-        _todasPreguntas = repositorio.getmTodasPreguntas();
+        todasPreguntasVIEWMODEL = repositorio.get_todasPreguntasREPO();
     }
 
-    LiveData<List<TablaPreguntas>> get_todasPreguntas(){
-        return _todasPreguntas;
+    LiveData<List<TablaPreguntas>> get_todasPreguntasVIEWMODEL(){
+        return todasPreguntasVIEWMODEL;
     }
 }
