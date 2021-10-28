@@ -102,7 +102,7 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     private String[] randomizar(String[] aux)
     {
-        //Cambia aleatoriamente las posiciones de las preguntas y las iamgenes en sus arrays
+        //Cambia aleatoriamente las posiciones de las preguntas y las imagenes en sus arrays
         Random random = new Random();
         for (int i = aux.length - 1; i > 0; i--)
         {

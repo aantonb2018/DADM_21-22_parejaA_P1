@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,7 +29,6 @@ public class SpinnerFragment extends Fragment {
 
     private Spinner spinner;
     private TextView spinnerQ;
-    private Button spinnerC;
     private ImageView spinnerI;
 
     MediaPlayer sfx_mal;
@@ -93,12 +93,14 @@ public class SpinnerFragment extends Fragment {
         // SPINNER -----------------------------------------
         spinner = (Spinner) root.findViewById(R.id.spinner);
 
-        // PROGRAMAR QUE NO SE TENGA QUE HACER UN BOTON PARA CONFIRMAR QUE EN ESTO NO SE XD
-//        spinner.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View view){
-//                comprobarRespuesta();
-//            }
-//        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                comprobarRespuesta();
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         mostrarPreguntas();
 
         return root;
