@@ -31,21 +31,21 @@ public class TablaPreguntas {
     public TablaPreguntas() {
         id = 0;
         pregunta="";
-        respuesta="";
         opcion1="";
         opcion2="";
         opcion3="";
         opcion4="";
+        respuesta="";
     }
 
-    public TablaPreguntas(int id, String pregunta, String respuesta, String opcion1, String opcion2, String opcion3, String opcion4) {
+    public TablaPreguntas(int id, String pregunta, String opcion1, String opcion2, String opcion3, String opcion4, String respuesta) {
         this.id = id;
         this.pregunta = pregunta;
-        this.respuesta = respuesta;
         this.opcion1 = opcion1;
         this.opcion2 = opcion2;
         this.opcion3 = opcion3;
         this.opcion4 = opcion4;
+        this.respuesta = respuesta;
     }
 
     // GETTERS Y SETTERS ------------------------

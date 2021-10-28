@@ -8,15 +8,24 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.Random;
 
 
 public class ActivityPreguntas extends AppCompatActivity {
+
+    // variables para la BASE DE DATOS ------------
+    private ViewModelPreguntas viewModelPreguntas;
+    List<TablaPreguntas> listaPreguntas;
+    TablaPreguntas preguntaActual;
+    int pregID = 0;
+    // --------------------------------------------
 
     private String nick;
 
@@ -27,7 +36,6 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     private RadioGroup grupoRespuestas; //Grupo para los radioButtons de las respuestas
     private Button siguiente; //Boton para pasar a la siguiente pregunta
-    //private Button anterior; //Boton para volver a la pregunta anterior (probablemente haya que quitarlo)
 
     private String[][] preguntas; //Array de arrays, contiene los arrays donde en la pos 0 esta la pregunta y en el resto las respuestas
     private int idxPregunta = 0; //Indice de la pregunta actual
