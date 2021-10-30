@@ -4,17 +4,23 @@ package com.example.dadm_21_22_parejaa_p1_info;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.Collections;
+import com.example.dadm_21_22_parejaa_p1_info.database.AppDatabase;
+import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepository;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepositoryImpl;
+
 import java.util.List;
 import java.util.Random;
 
@@ -22,10 +28,11 @@ import java.util.Random;
 public class ActivityPreguntas extends AppCompatActivity {
 
     // variables para la BASE DE DATOS ------------
+    /*
     private ViewModelPreguntas viewModelPreguntas;
     List<TablaPreguntas> listaPreguntas;
     TablaPreguntas preguntaActual;
-    int pregID = 0;
+    int pregID = 0;*/
     // --------------------------------------------
 
     private String nick;
@@ -42,6 +49,7 @@ public class ActivityPreguntas extends AppCompatActivity {
     private int idxPregunta = 0; //Indice de la pregunta actual
     private int soluciones[]; //Array con los indices de las soluciones correctas del array de arrays preguntas
     int aciertos, fallos = 0;
+    int longitud;
 
     private int[] imagenes = {R.drawable.image0, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
             R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image8,R.drawable.image9,R.drawable.image10,
@@ -50,15 +58,18 @@ public class ActivityPreguntas extends AppCompatActivity {
             R.drawable.image23,R.drawable.image24,R.drawable.image25,R.drawable.image26,R.drawable.image27,R.drawable.image28,
             R.drawable.image29};//Array con las imagenes asociadas al trivial
 
+    //Resources resources = getResources();
+    //Drawable imageId = resources.getDrawable(resources.getIdentifier(R.id.pregunta, "drawable", getPackageName()));
+    String resourceId = "image0";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
-
         // JUEGO EN PANTALLA COMPLETA
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+    /*
         viewModelPreguntas = ViewModelProviders.of(this).get(ViewModelPreguntas.class);
         viewModelPreguntas.get_todasPreguntasVIEWMODEL().observe(this, new Observer<List<TablaPreguntas>>() {
             @Override
@@ -66,14 +77,74 @@ public class ActivityPreguntas extends AppCompatActivity {
 
                 fetchPreguntas(preguntas);
             }
-        });
+        });*/
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             nick = extras.getString("nick");
         }
 
+        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+
+        /**
+         * creamos una instancia del repositorio de items
+         */
+        PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
+
+        /**
+         * creamos un objeto de la tabla Item
+         */
         leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
+        /*
+        for(int i = 0; i < 30; i++){
+            PreguntasQuiz pQ = new PreguntasQuiz();
+            pQ.setPregunta(preguntas[i][0]);
+            pQ.setRespuesta(soluciones[i]);
+            pQ.setOpcion1(preguntas[i][1]);
+            pQ.setOpcion2(preguntas[i][2]);
+            pQ.setOpcion3(preguntas[i][3]);
+            pQ.setOpcion4(preguntas[i][4]);
+
+            repo.insertItem(pQ);
+        }*/
+        /*
+        int x = 28; //FINISHED
+
+        PreguntasQuiz pQ = new PreguntasQuiz();
+        pQ.setPregunta(preguntas[x][0]);
+        pQ.setRespuesta(soluciones[x]);
+        pQ.setOpcion1(preguntas[x][1]);
+        pQ.setOpcion2(preguntas[x][2]);
+        pQ.setOpcion3(preguntas[x][3]);
+        pQ.setOpcion4(preguntas[x][4]);
+        repo.insertItem(pQ);*/
+
+        /*
+        PreguntasQuiz pQ = repo.findItemById(10);
+        pQ.setPregunta("¿Cómo se llama el demonio que vive dentro de Yuuji Itadori?");
+        repo.updateItem(pQ);*/
+
+        /*
+        List<PreguntasQuiz> preguntasList = repo.getAllItems();
+        for(PreguntasQuiz i : preguntasList) {
+            Log.d("Prueba Database", "Num Pregunta: " + i.getItemId() + ", Pregunta: " +
+                    i.getPregunta() + ", Respuesta: " + i.getRespuesta() + ", Opcion1: " + i.getOpcion1() +
+                    ", Opcion2: " + i.getOpcion2() + ", Opcion3: " + i.getOpcion3() + ", Opcion4: " + i.getOpcion4());
+        }*/
+
+
+
+        Toast.makeText(ActivityPreguntas.this,"longitud " + longitud, Toast.LENGTH_LONG).show();
+
+        /*
+        Resources resources = root.getResources();
+        Drawable imageId = resources.getDrawable(resources.getIdentifier(multimediaSource, "drawable", root.getContext().getPackageName()));
+        iv.setImageDrawable(imageId);
+         */
+
+
+        //iv.setImageDrawable(imageId);
 
         pregunta = (TextView) findViewById(R.id.pregunta);
         pregunta.setText(idxPregunta + "/10");
@@ -87,7 +158,7 @@ public class ActivityPreguntas extends AppCompatActivity {
         fragManager = getSupportFragmentManager();
         fragManager.beginTransaction().replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
     }
-
+    /*
     private void fetchPreguntas(List<TablaPreguntas> preguntas){
 
         listaPreguntas = preguntas;
@@ -97,16 +168,19 @@ public class ActivityPreguntas extends AppCompatActivity {
         preguntaActual = listaPreguntas.get(pregID);
 
 
-    }
+    }*/
 
     private void leerItems(){
 
         String auxPreguntas[] = getResources().getStringArray(R.array.test); //Obtenemos los items que son las preguntas y respuestas
-        auxPreguntas = randomizar(auxPreguntas);
+        //auxPreguntas = randomizar(auxPreguntas);
+        longitud = auxPreguntas.length;
         preguntas = new String[auxPreguntas.length][5];
         soluciones = new int[auxPreguntas.length];
 
         for(int i = 0; i < auxPreguntas.length; i++){
+
+
             String respuestas[] = auxPreguntas[i].split(";"); //Separamos cada elemento del array por los ; para tener en cada posicion una respuesta diferente
             //Toast.makeText(MainActivity.this, respuestas[4], Toast.LENGTH_LONG).show();
             for(int j = 0; j < respuestas.length; j++){
@@ -164,6 +238,10 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     public int[] getImagenes(){
         return imagenes;
+    }
+
+    public String getImageId(){
+        return resourceId;
     }
 
     public void addAcierto(){

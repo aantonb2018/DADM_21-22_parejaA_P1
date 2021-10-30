@@ -86,7 +86,11 @@ public class ButtonFragment extends Fragment {
         buttonI.setVisibility(View.VISIBLE);
         Resources rImages = getResources();
         Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
-        buttonI.setImageDrawable(idImages);
+        //buttonI.setImageDrawable(idImages);
+
+        Resources resources = root.getResources();
+        Drawable imageId = resources.getDrawable(resources.getIdentifier(((ActivityPreguntas) getActivity()).getImageId(), "drawable", root.getContext().getPackageName()));
+        buttonI.setImageDrawable(imageId);
 
         button[0] = (Button) root.findViewById(R.id.button0);
         button[0].setOnClickListener(new View.OnClickListener(){

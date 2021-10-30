@@ -41,7 +41,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 // si el campo de input está vacío se lanza un mensaje avisando de que no se ha introducido un nombre
                 if ((inputTexto.getText().toString()).isEmpty()){
                     Toast.makeText(MenuPrincipal.this,"No has introducido un nombre", Toast.LENGTH_LONG).show();
-
+                }else{
                     // se pasa a la siguiente actividad
                     Intent empezar = new Intent(MenuPrincipal.this, ActivityPreguntas.class);
 
