@@ -54,17 +54,11 @@ public class PreguntasQuiz {
     private String opcion4;
 
     @NonNull
+    @ColumnInfo(name = "tipo")
+    private int tipo;
+
     @ColumnInfo(name = "multimedia")
     private int multimedia;
-
-    @ColumnInfo(name = "imagen")
-    private String imagen;
-
-    @ColumnInfo(name = "audio")
-    private String audio;
-
-    @ColumnInfo(name = "video")
-    private String video;
 
 
     /******************************************************************************
@@ -126,6 +120,14 @@ public class PreguntasQuiz {
         this.opcion4 = opcion4;
     }
 
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     public int getMultimedia() {
         return multimedia;
     }
@@ -134,28 +136,5 @@ public class PreguntasQuiz {
         this.multimedia = multimedia;
     }
 
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    public String getAudio() {
-        return audio;
-    }
-
-    public void setAudio(String audio) {
-        this.audio = audio;
-    }
-
-    public String getVideo() {
-        return video;
-    }
-
-    public void setVideo(String String) {
-        this.video = video;
-    }
 
 }

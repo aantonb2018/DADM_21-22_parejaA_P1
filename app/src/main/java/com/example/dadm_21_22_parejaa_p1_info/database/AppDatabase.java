@@ -2,8 +2,8 @@ package com.example.dadm_21_22_parejaa_p1_info.database;
 
 import android.content.Context;
 
-import com.example.dadm_21_22_parejaa_p1_info.database.dao.ItemDAO;
 import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
+import com.example.dadm_21_22_parejaa_p1_info.database.dao.ItemDAO;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -17,7 +17,7 @@ import androidx.room.RoomDatabase;
  */
 @Database(entities = {
         PreguntasQuiz.class //Tabla de items
-}, version = 2 //version de la db
+}, version = 5 //version de la db
 )
 public abstract class AppDatabase extends RoomDatabase {
 

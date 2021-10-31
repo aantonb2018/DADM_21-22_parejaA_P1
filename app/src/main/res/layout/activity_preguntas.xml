@@ -52,6 +52,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerMultimedia"
+        android:name="com.example.dadm_21_22_parejaa_p1_info.ImageFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineMainHor1"
+        tools:layout="@layout/fragment_video" />
+
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.dadm_21_22_parejaa_p1_info.ButtonFragment"
         android:layout_width="0dp"
@@ -59,7 +70,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guidelineMainHor2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineMainHor1" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineMainHor3"
+        tools:layout="@layout/fragment_button" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineMainVert1"
@@ -94,6 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.40" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

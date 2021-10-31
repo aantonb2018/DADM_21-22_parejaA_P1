@@ -19,24 +19,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/checkboxQ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/kerokero"
-                android:padding="15dp"
-                android:text="Question"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-
-            <ImageView
-                android:id="@+id/checkboxI"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:visibility="visible"
-                tools:src="@drawable/image0" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

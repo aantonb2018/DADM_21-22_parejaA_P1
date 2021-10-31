@@ -84,11 +84,12 @@ public class SpinnerFragment extends Fragment {
         spinnerQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
 
         // IMAGEN ------------------------------------------------
+        /*
         spinnerI = (ImageView) root.findViewById(R.id.spinnerI);
         spinnerI.setVisibility(View.VISIBLE);
         Resources rImages = getResources();
-        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
-        spinnerI.setImageDrawable(idImages);
+        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getResources()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
+        spinnerI.setImageDrawable(idImages);*/
 
         // SPINNER -----------------------------------------
         spinner = (Spinner) root.findViewById(R.id.spinner);

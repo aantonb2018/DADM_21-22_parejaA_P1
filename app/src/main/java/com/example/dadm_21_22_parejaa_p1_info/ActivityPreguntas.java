@@ -40,7 +40,7 @@ public class ActivityPreguntas extends AppCompatActivity {
     private TextView pregunta; //Texto que muestra el indice de pregunta
     private TextView acierto;  //Texto que muestra el numero de aciertos
     private TextView fallo;    //Texto que muestra el numero de fallos
-    private FragmentManager fragManager;
+    private FragmentManager fragManager;//, fragManager2;
 
     private RadioGroup grupoRespuestas; //Grupo para los radioButtons de las respuestas
     private Button siguiente; //Boton para pasar a la siguiente pregunta
@@ -48,19 +48,26 @@ public class ActivityPreguntas extends AppCompatActivity {
     private String[][] preguntas; //Array de arrays, contiene los arrays donde en la pos 0 esta la pregunta y en el resto las respuestas
     private int idxPregunta = 0; //Indice de la pregunta actual
     private int soluciones[]; //Array con los indices de las soluciones correctas del array de arrays preguntas
+    private int seleccion[]; //Indice de las preguntas seleccionadas
     int aciertos, fallos = 0;
     int longitud;
 
-    private int[] imagenes = {R.drawable.image0, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
+    List<PreguntasQuiz> preguntasList;
+
+    private int[] multimedia = {R.drawable.image0, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
             R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image8,R.drawable.image9,R.drawable.image10,
             R.drawable.image11,R.drawable.image12,R.drawable.image13,R.drawable.image14,R.drawable.image15,R.drawable.image16,
             R.drawable.image17,R.drawable.image18,R.drawable.image19,R.drawable.image20,R.drawable.image21,R.drawable.image22,
             R.drawable.image23,R.drawable.image24,R.drawable.image25,R.drawable.image26,R.drawable.image27,R.drawable.image28,
-            R.drawable.image29};//Array con las imagenes asociadas al trivial
+            R.drawable.image29, R.raw.audio30, R.raw.audio31, R.raw.audio32, R.raw.audio33, R.raw.audio34, R.raw.audio35,
+            R.raw.audio36, R.raw.audio37, R.raw.audio38, R.raw.audio39, R.raw.audio40, R.raw.audio41, R.raw.audio42, R.raw.audio43,
+            R.raw.video44, R.raw.video45, R.raw.video46, R.raw.video47, R.raw.video48, R.raw.video49, R.raw.video50};//Array con las imagenes asociadas al trivial
 
     //Resources resources = getResources();
     //Drawable imageId = resources.getDrawable(resources.getIdentifier(R.id.pregunta, "drawable", getPackageName()));
-    String resourceId = "image0";
+    int resourceId = R.drawable.image17;
+    int resourceId2 = R.raw.audio35;
+    int resourceId3 = R.raw.video45;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +92,10 @@ public class ActivityPreguntas extends AppCompatActivity {
             nick = extras.getString("nick");
         }
 
+        longitud = 10;
+
+        seleccion = new int[10];
+
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
 
         /**
@@ -95,47 +106,51 @@ public class ActivityPreguntas extends AppCompatActivity {
         /**
          * creamos un objeto de la tabla Item
          */
-        leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
-        /*
-        for(int i = 0; i < 30; i++){
-            PreguntasQuiz pQ = new PreguntasQuiz();
-            pQ.setPregunta(preguntas[i][0]);
-            pQ.setRespuesta(soluciones[i]);
-            pQ.setOpcion1(preguntas[i][1]);
-            pQ.setOpcion2(preguntas[i][2]);
-            pQ.setOpcion3(preguntas[i][3]);
-            pQ.setOpcion4(preguntas[i][4]);
+        //leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
 
-            repo.insertItem(pQ);
-        }*/
-        /*
-        int x = 28; //FINISHED
-
-        PreguntasQuiz pQ = new PreguntasQuiz();
-        pQ.setPregunta(preguntas[x][0]);
-        pQ.setRespuesta(soluciones[x]);
-        pQ.setOpcion1(preguntas[x][1]);
-        pQ.setOpcion2(preguntas[x][2]);
-        pQ.setOpcion3(preguntas[x][3]);
-        pQ.setOpcion4(preguntas[x][4]);
-        repo.insertItem(pQ);*/
+        //PreguntasQuiz pQ = new PreguntasQuiz();
+        //pQ.setTipo(3);
 
         /*
-        PreguntasQuiz pQ = repo.findItemById(10);
-        pQ.setPregunta("¿Cómo se llama el demonio que vive dentro de Yuuji Itadori?");
+        PreguntasQuiz[] pQ = new PreguntasQuiz[50];
+        for(int i = 0; i < 50; i++){
+            pQ[i] = new PreguntasQuiz();
+            //pQ[i].setItemId(i);
+            pQ[i].setPregunta(preguntas[i][0]);
+            pQ[i].setRespuesta(soluciones[i]);
+            pQ[i].setOpcion1(preguntas[i][1]);
+            pQ[i].setOpcion2(preguntas[i][2]);
+            pQ[i].setOpcion3(preguntas[i][3]);
+            pQ[i].setOpcion4(preguntas[i][4]);
+            if(i < 30){
+                pQ[i].setTipo(0);
+            }else if(i > 29 && i <44){
+                pQ[i].setTipo(1);
+            }else{
+                pQ[i].setTipo(2);
+            }
+            pQ[i].setMultimedia(multimedia[i]);
+
+            repo.insertItem(pQ[i]);
+        }
+        */
+        /*
+        PreguntasQuiz pQ = repo.findItemById(40);
+        pQ.setOpcion1("Meliodas");
         repo.updateItem(pQ);*/
 
-        /*
-        List<PreguntasQuiz> preguntasList = repo.getAllItems();
+
+        preguntasList = repo.getAllItems();
         for(PreguntasQuiz i : preguntasList) {
             Log.d("Prueba Database", "Num Pregunta: " + i.getItemId() + ", Pregunta: " +
                     i.getPregunta() + ", Respuesta: " + i.getRespuesta() + ", Opcion1: " + i.getOpcion1() +
-                    ", Opcion2: " + i.getOpcion2() + ", Opcion3: " + i.getOpcion3() + ", Opcion4: " + i.getOpcion4());
-        }*/
+                    ", Opcion2: " + i.getOpcion2() + ", Opcion3: " + i.getOpcion3() + ", Opcion4: " + i.getOpcion4() +
+                    ", Tipo: " + i.getTipo() + ", Id Multimedia: " + i.getMultimedia());
+        }
 
+        seleccionarPreguntas();
 
-
-        Toast.makeText(ActivityPreguntas.this,"longitud " + longitud, Toast.LENGTH_LONG).show();
+        //Toast.makeText(ActivityPreguntas.this,"longitud " + longitud, Toast.LENGTH_LONG).show();
 
         /*
         Resources resources = root.getResources();
@@ -157,7 +172,13 @@ public class ActivityPreguntas extends AppCompatActivity {
 
         fragManager = getSupportFragmentManager();
         fragManager.beginTransaction().replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+        fragManager.beginTransaction().replace(R.id.fragmentContainerMultimedia, new ImageFragment(), "FRAGMENT_MULTIMEDIA");
+        /*
+        fragManager2 = getSupportFragmentManager();
+        fragManager2.beginTransaction().replace(R.id.fragmentContainerMultimedia, new AudioFragment(), "FRAGMENT_MULTIMEDIA");
+        */
     }
+
     /*
     private void fetchPreguntas(List<TablaPreguntas> preguntas){
 
@@ -193,6 +214,62 @@ public class ActivityPreguntas extends AppCompatActivity {
         }
     }
 
+    private void seleccionarPreguntas(){
+        boolean sinRepetir = true;
+        for(int i = 0; i < longitud - 3; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(29-0+1)+0);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        for(int i = longitud - 3; i < longitud - 1; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(42-30+1)+30);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        for(int i = longitud - 1; i < longitud; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(49-43+1)+43);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        /*
+        for (int i = longitud - 1; i > 1; i--)
+        {
+            Random random = new Random();
+
+            int index = random.nextInt(i + 1);
+            // Cambio
+            int intTemp = seleccion[index];
+            //int idTemp = imagenes[index];
+
+            seleccion[index] = seleccion[i];
+            //imagenes[index] = imagenes[i];
+
+            seleccion[i] = intTemp;
+            //imagenes[i] = idTemp;
+        }*/
+    }
+
     private void comprobarRespuesta(){
         int respuestaSelec = grupoRespuestas.getCheckedRadioButtonId(); //Recoge el id de la respuesta marcada
 
@@ -212,13 +289,13 @@ public class ActivityPreguntas extends AppCompatActivity {
             int index = random.nextInt(i + 1);
             // Cambio
             String textoTemp = aux[index];
-            int idTemp = imagenes[index];
+            //int idTemp = imagenes[index];
 
             aux[index] = aux[i];
-            imagenes[index] = imagenes[i];
+            //imagenes[index] = imagenes[i];
 
             aux[i] = textoTemp;
-            imagenes[i] = idTemp;
+            //imagenes[i] = idTemp;
         }
 
         return aux;
@@ -236,12 +313,24 @@ public class ActivityPreguntas extends AppCompatActivity {
         return idxPregunta;
     }
 
+    public int getSeleccion(){
+        return seleccion[idxPregunta];
+    }
+/*
     public int[] getImagenes(){
         return imagenes;
+    }*/
+
+    public int getImageId(){
+        return resourceId;
     }
 
-    public String getImageId(){
-        return resourceId;
+    public int getAudioId(){
+        return resourceId2;
+    }
+
+    public int getVideoId(){
+        return resourceId3;
     }
 
     public void addAcierto(){
@@ -260,21 +349,42 @@ public class ActivityPreguntas extends AppCompatActivity {
         idxPregunta++;
         pregunta.setText(idxPregunta + "/10");
 
-        if(idxPregunta < 10) {//Si no se esta en la ultima pregunta...
+        if(idxPregunta < longitud) {//Si no se esta en la ultima pregunta...
             FragmentTransaction fragTransaction = fragManager.beginTransaction();
+            //FragmentTransaction fragTransaction2 = fragManager2.beginTransaction();
             int fragType = 0 + (int) (Math.random() * 4);
             switch (fragType) {//Se escoge aleatoriamente un tipo de pregunta para la siguiente
                 case 0:
                     fragTransaction.replace(R.id.fragmentContainerView, new RadiobuttonFragment(), "FRAGMENT_QUESTION");
+                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 1:
                     fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 2:
                     fragTransaction.replace(R.id.fragmentContainerView, new CheckboxFragment(), "FRAGMENT_QUESTION");
+                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 3:
-                    fragTransaction.replace(R.id.fragmentContainerView, new SpinnerFragment(), "FRAGMENT_QUESTION");
+                    //SPINNER
+                    fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
+                    break;
+            }
+            fragType = preguntasList.get(seleccion[idxPregunta]).getTipo();
+            switch (fragType) {//Se escoge aleatoriamente un tipo de pregunta para la siguiente
+                case 0:
+                    //fragTransaction.replace(R.id.fragmentContainerView, new RadiobuttonFragment(), "FRAGMENT_QUESTION");
+                    fragTransaction.replace(R.id.fragmentContainerMultimedia, new ImageFragment(), "FRAGMENT_MULTIMEDIA");
+                    break;
+                case 1:
+                    //fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+                    fragTransaction.replace(R.id.fragmentContainerMultimedia, new AudioFragment(), "FRAGMENT_MULTIMEDIA");
+                    break;
+                case 2:
+                    //fragTransaction.replace(R.id.fragmentContainerView, new CheckboxFragment(), "FRAGMENT_QUESTION");
+                    fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
             }
             fragTransaction.commit();

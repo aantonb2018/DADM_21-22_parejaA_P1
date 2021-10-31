@@ -17,6 +17,13 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.dadm_21_22_parejaa_p1_info.database.AppDatabase;
+import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepository;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepositoryImpl;
+
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RadiobuttonFragment#newInstance} factory method to
@@ -29,11 +36,13 @@ public class RadiobuttonFragment extends Fragment {
     };
 
     private RadioButton radio[] = new RadioButton[4];
-    private TextView radioQ;
-    private ImageView radioI;
 
     MediaPlayer sfx_mal;
     MediaPlayer sfx_bien;
+
+    List<PreguntasQuiz> preguntasList;
+
+    int idx;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,16 +89,11 @@ public class RadiobuttonFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_radiobutton, container, false);
 
-        // PREGUNTA ----------------------------------------------
-        radioQ = (TextView) root.findViewById(R.id.radioQ);
-        radioQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
+        idx = ((ActivityPreguntas)getActivity()).getSeleccion();
 
-        // IMAGEN ------------------------------------------------
-        radioI = (ImageView) root.findViewById(R.id.radioI);
-        radioI.setVisibility(View.VISIBLE);
-        Resources rImages = getResources();
-        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
-        radioI.setImageDrawable(idImages);
+        AppDatabase db = AppDatabase.getInstance(root.getContext());
+        PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
+        preguntasList = repo.getAllItems();
 
         // RADIOBUTTONS ----------------------------------------------
         radio[0] = (RadioButton) root.findViewById(R.id.radio0);
@@ -138,7 +142,7 @@ public class RadiobuttonFragment extends Fragment {
         }
 
         if(respuestaSelec != -1) {
-            if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
+            if (preguntasList.get(idx).getRespuesta() == respuestaSelec + 1) {
                 sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
                 sfx_bien.start();
                 ((ActivityPreguntas) getActivity()).addAcierto();
@@ -151,10 +155,14 @@ public class RadiobuttonFragment extends Fragment {
     }
 
     public void mostrarPreguntas(){
-        radioQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]); //Escribe la pregunta actual en la pantalla
 
+        radio[0].setText(preguntasList.get(idx).getOpcion1());
+        radio[1].setText(preguntasList.get(idx).getOpcion2());
+        radio[2].setText(preguntasList.get(idx).getOpcion3());
+        radio[3].setText(preguntasList.get(idx).getOpcion4());
+        /*
         for(int i = 0; i < radio.length; i++){
             radio[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
-        }
+        }*/
     }
 }

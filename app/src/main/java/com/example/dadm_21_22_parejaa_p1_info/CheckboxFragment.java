@@ -16,6 +16,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dadm_21_22_parejaa_p1_info.database.AppDatabase;
+import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepository;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepositoryImpl;
+
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CheckboxFragment#newInstance} factory method to
@@ -28,11 +35,13 @@ public class CheckboxFragment extends Fragment {
     };
 
     private CheckBox checkbox[] = new CheckBox[4];
-    private TextView checkboxQ;
-    private ImageView checkboxI;
 
     MediaPlayer sfx_mal;
     MediaPlayer sfx_bien;
+
+    List<PreguntasQuiz> preguntasList;
+
+    int idx;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,16 +88,11 @@ public class CheckboxFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_checkbox, container, false);
 
-        // PREGUNTA ----------------------------------------------
-        checkboxQ = (TextView) root.findViewById(R.id.checkboxQ);
-        checkboxQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
+        idx = ((ActivityPreguntas)getActivity()).getSeleccion();
 
-        // IMAGEN ------------------------------------------------
-        checkboxI = (ImageView) root.findViewById(R.id.checkboxI);
-        checkboxI.setVisibility(View.VISIBLE);
-        Resources rImages = getResources();
-        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
-        checkboxI.setImageDrawable(idImages);
+        AppDatabase db = AppDatabase.getInstance(root.getContext());
+        PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
+        preguntasList = repo.getAllItems();
 
         // CHECKBOXS ----------------------------------------------
         checkbox[0] = (CheckBox) root.findViewById(R.id.checkbox0);
@@ -140,7 +144,7 @@ public class CheckboxFragment extends Fragment {
         }
 
         if(respuestaSelec != -1) {
-            if ((((ActivityPreguntas) getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec + 1) {
+            if (preguntasList.get(idx).getRespuesta() == respuestaSelec + 1) {
                 sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
                 sfx_bien.start();
                 ((ActivityPreguntas) getActivity()).addAcierto();
@@ -153,10 +157,14 @@ public class CheckboxFragment extends Fragment {
     }
 
     public void mostrarPreguntas(){
-        checkboxQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]); //Escribe la pregunta actual en la pantalla
 
+        checkbox[0].setText(preguntasList.get(idx).getOpcion1());
+        checkbox[1].setText(preguntasList.get(idx).getOpcion2());
+        checkbox[2].setText(preguntasList.get(idx).getOpcion3());
+        checkbox[3].setText(preguntasList.get(idx).getOpcion4());
+        /*
         for(int i = 0; i < checkbox.length; i++){
             checkbox[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
-        }
+        }*/
     }
 }

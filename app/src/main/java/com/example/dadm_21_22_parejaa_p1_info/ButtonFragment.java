@@ -15,6 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dadm_21_22_parejaa_p1_info.database.AppDatabase;
+import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepository;
+import com.example.dadm_21_22_parejaa_p1_info.repository.PreguntasQuizRepositoryImpl;
+
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ButtonFragment#newInstance} factory method to
@@ -32,6 +39,10 @@ public class ButtonFragment extends Fragment {
 
     MediaPlayer sfx_mal;
     MediaPlayer sfx_bien;
+
+    List<PreguntasQuiz> preguntasList;
+
+    int idx;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,18 +90,11 @@ public class ButtonFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_button, container, false);
 
-        buttonQ = (TextView) root.findViewById(R.id.buttonQ);
-        buttonQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]);
+        idx = ((ActivityPreguntas)getActivity()).getSeleccion();
 
-        buttonI = (ImageView) root.findViewById(R.id.buttonI);
-        buttonI.setVisibility(View.VISIBLE);
-        Resources rImages = getResources();
-        Drawable idImages = rImages.getDrawable(((ActivityPreguntas)getActivity()).getImagenes()[((ActivityPreguntas)getActivity()).getIdxPregunta()]);
-        //buttonI.setImageDrawable(idImages);
-
-        Resources resources = root.getResources();
-        Drawable imageId = resources.getDrawable(resources.getIdentifier(((ActivityPreguntas) getActivity()).getImageId(), "drawable", root.getContext().getPackageName()));
-        buttonI.setImageDrawable(imageId);
+        AppDatabase db = AppDatabase.getInstance(root.getContext());
+        PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
+        preguntasList = repo.getAllItems();
 
         button[0] = (Button) root.findViewById(R.id.button0);
         button[0].setOnClickListener(new View.OnClickListener(){
@@ -126,7 +130,8 @@ public class ButtonFragment extends Fragment {
     }
 
     public void comprobarRespuesta(int respuestaSelec){
-        if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
+        if(preguntasList.get(idx).getRespuesta() == respuestaSelec+1){
+            //if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
             //Si la respuestaSeleccionada coincide con la almacenada en el array de soluciones...
             sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
             sfx_bien.start();
@@ -142,10 +147,14 @@ public class ButtonFragment extends Fragment {
     }
 
     public void mostrarPreguntas(){
-        buttonQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]); //Escribe la pregunta actual en la pantalla
+        //buttonQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]); //Escribe la pregunta actual en la pantalla
 
-        for(int i = 0; i < button.length; i++){
-            button[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
-        }
+        button[0].setText(preguntasList.get(idx).getOpcion1());
+        button[1].setText(preguntasList.get(idx).getOpcion2());
+        button[2].setText(preguntasList.get(idx).getOpcion3());
+        button[3].setText(preguntasList.get(idx).getOpcion4());
+        /*for(int i = 0; i < button.length; i++){
+            //button[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
+        }*/
     }
 }
