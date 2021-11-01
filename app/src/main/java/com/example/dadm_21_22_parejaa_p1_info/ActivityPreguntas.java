@@ -106,6 +106,29 @@ public class ActivityPreguntas extends AppCompatActivity {
 
 
         seleccion = new int[longitud];
+        int contFaciles = 0,contMedio = 0;
+        for(int x = 0; x < 30; x++){
+            if(nivel[x] == 1){contFaciles++;}
+            if(nivel[x] == 2){contMedio++;}
+        }
+        Toast.makeText(ActivityPreguntas.this,"Faciles Img: " + contFaciles +",Medio Img: " + contMedio, Toast.LENGTH_LONG).show();
+
+        contFaciles = contMedio = 0;
+
+        for(int x = 30; x < 44; x++){
+            if(nivel[x] == 1){contFaciles++;}
+            if(nivel[x] == 2){contMedio++;}
+        }
+        Toast.makeText(ActivityPreguntas.this,"Faciles Aud: " + contFaciles +",Medio Aud: " + contMedio, Toast.LENGTH_LONG).show();
+
+        contFaciles = contMedio = 0;
+
+        for(int x = 44; x < 51; x++){
+            if(nivel[x] == 1){contFaciles++;}
+            if(nivel[x] == 2){contMedio++;}
+        }
+        Toast.makeText(ActivityPreguntas.this,"Faciles Vid: " + contFaciles +",Medio Vid: " + contMedio, Toast.LENGTH_LONG).show();
+
 
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
 
@@ -149,18 +172,32 @@ public class ActivityPreguntas extends AppCompatActivity {
         PreguntasQuiz pQ = repo.findItemById(40);
         pQ.setOpcion1("Meliodas");
         repo.updateItem(pQ);*/
-
-
         preguntasList = repo.getAllItems();
-        /*
+        switch(dificultad){
+            case 0:
+                seleccionarPreguntas();
+                break;
+            case 1:
+                //preguntasList = repo.getAllEasy();
+                seleccionarPreguntasEasy();
+                break;
+            case 2:
+                //preguntasList = repo.getAllMedium();
+                seleccionarPreguntasMedium();
+                break;
+        }
+        //preguntasList = repo.getAllItems();
+        //List<PreguntasQuiz> preguntasList2;
+        //preguntasList2 = repo.getAllEasy();
+
         for(PreguntasQuiz i : preguntasList) {
             Log.d("Prueba Database", "Num Pregunta: " + i.getItemId() + ", Pregunta: " +
                     i.getPregunta() + ", Respuesta: " + i.getRespuesta() + ", Opcion1: " + i.getOpcion1() +
                     ", Opcion2: " + i.getOpcion2() + ", Opcion3: " + i.getOpcion3() + ", Opcion4: " + i.getOpcion4() +
                     ", Tipo: " + i.getTipo() + ", Id Multimedia: " + i.getMultimedia() + ", Nivel: " + i.getNivel());
-        }*/
+        }
 
-        seleccionarPreguntas();
+
 
         //Toast.makeText(ActivityPreguntas.this,"longitud " + longitud + " dificultad " + dificultad, Toast.LENGTH_LONG).show();
 
@@ -298,6 +335,134 @@ public class ActivityPreguntas extends AppCompatActivity {
             seleccion[i] = intTemp;
             //imagenes[i] = idTemp;
         }*/
+    }
+
+    private void seleccionarPreguntasEasy(){
+        boolean sinRepetir = true;
+        int numA = 0, numV = 0;
+        switch(longitud){
+            case 5:
+                numA = 2;
+                numV = 1;
+                break;
+            case 10:
+                numA = 3;
+                numV = 2;
+                break;
+            case 15:
+                numA = 4;
+                numV = 3;
+        }
+
+        for(int i = 0; i < longitud - (numA + numV); i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(29-0+1)+0);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }else if(preguntasList.get(seleccion[i]).getNivel() != 1){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        for(int i = longitud - (numA + numV); i < longitud - numV; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(42-30+1)+30);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }else if(preguntasList.get(seleccion[i]).getNivel() != 1){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        for(int i = longitud - numV; i < longitud; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(50-43+1)+43);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }else if(preguntasList.get(seleccion[i]).getNivel() != 1){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+
+
+
+    }
+
+    private void seleccionarPreguntasMedium(){
+        boolean sinRepetir = true;
+        int numA = 0, numV = 0;
+        switch(longitud){
+            case 5:
+                numA = 2;
+                numV = 1;
+                break;
+            case 10:
+                numA = 3;
+                numV = 2;
+                break;
+            case 15:
+                numA = 4;
+                numV = 3;
+        }
+
+        for(int i = 0; i < longitud - (numA + numV); i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(29-0+1)+0);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }else if(preguntasList.get(seleccion[i]).getNivel() != 2){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        for(int i = longitud - (numA + numV); i < longitud - numV; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(42-30+1)+30);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }else if(preguntasList.get(seleccion[i]).getNivel() != 2){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+        for(int i = longitud - numV; i < longitud; i++){
+            do{
+                sinRepetir = true;
+                seleccion[i] = (int) Math.floor(Math.random()*(50-43+1)+43);
+                for(int j = 0; j < i; j++){
+                    if(seleccion[i] == seleccion[j]){
+                        sinRepetir = false;
+                    }else if(preguntasList.get(seleccion[i]).getNivel() != 2){
+                        sinRepetir = false;
+                    }
+                }
+            }while(sinRepetir == false);
+
+        }
+
+
+
     }
 
     private void comprobarRespuesta(){

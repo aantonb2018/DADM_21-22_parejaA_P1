@@ -31,6 +31,16 @@ public class PreguntasQuizRepositoryImpl implements PreguntasQuizRepository {
         return dao.getAll();
     }
 
+    @Override
+    public List<PreguntasQuiz> getAllEasy() {
+        return dao.getEasy();
+    }
+
+    @Override
+    public List<PreguntasQuiz> getAllMedium() {
+        return dao.getMedium();
+    }
+
     /**
      * obtiene un Item filtrado por id
      * @param id del item

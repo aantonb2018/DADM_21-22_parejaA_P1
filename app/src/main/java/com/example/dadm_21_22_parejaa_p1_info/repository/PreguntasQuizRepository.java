@@ -10,6 +10,8 @@ import java.util.List;
 public interface PreguntasQuizRepository {
 
     List<PreguntasQuiz> getAllItems();
+    List<PreguntasQuiz> getAllEasy();
+    List<PreguntasQuiz> getAllMedium();
     PreguntasQuiz findItemById(int id);
     void insertItem(PreguntasQuiz item);
     void updateItem(PreguntasQuiz item);

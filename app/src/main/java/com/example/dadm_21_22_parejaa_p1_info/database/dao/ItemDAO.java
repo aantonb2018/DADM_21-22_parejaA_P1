@@ -24,6 +24,12 @@ public interface ItemDAO {
     @Query("select * from PreguntasQuiz")
     List<PreguntasQuiz> getAll();
 
+    @Query("select * from PreguntasQuiz where nivel = 1")
+    List<PreguntasQuiz> getEasy();
+
+    @Query("select * from PreguntasQuiz where nivel = 2")
+    List<PreguntasQuiz> getMedium();
+
     @Query("select * from PreguntasQuiz where itemId = :itemId")
     PreguntasQuiz findById(int itemId);
 
