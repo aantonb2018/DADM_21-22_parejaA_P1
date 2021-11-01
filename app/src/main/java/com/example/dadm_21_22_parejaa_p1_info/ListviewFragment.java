@@ -1,7 +1,7 @@
 package com.example.dadm_21_22_parejaa_p1_info;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.dadm_21_22_parejaa_p1_info.database.AppDatabase;
 import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
@@ -22,16 +22,14 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ImageFragment#newInstance} factory method to
+ * Use the {@link ListviewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ImageFragment extends Fragment {
+public class ListviewFragment extends Fragment {
 
-    private TextView imageQ;
-    private ImageView imageM;
+    private ListView lv;
 
     List<PreguntasQuiz> preguntasList;
-
     int idx;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -39,13 +37,11 @@ public class ImageFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ImageFragment() {
+    public ListviewFragment() {
         // Required empty public constructor
     }
 
@@ -55,11 +51,11 @@ public class ImageFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ImageFragment.
+     * @return A new instance of fragment ListviewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ImageFragment newInstance(String param1, String param2) {
-        ImageFragment fragment = new ImageFragment();
+    public static ListviewFragment newInstance(String param1, String param2) {
+        ListviewFragment fragment = new ListviewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,7 +76,7 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_image, container, false);
+        View root = inflater.inflate(R.layout.fragment_listview, container, false);
 
         idx = ((ActivityPreguntas)getActivity()).getSeleccion();
 
@@ -88,22 +84,29 @@ public class ImageFragment extends Fragment {
         PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
         preguntasList = repo.getAllItems();
 
-        // PREGUNTA ----------------------------------------------
-        imageQ = (TextView) root.findViewById(R.id.preguntaA);
-        imageQ.setText(preguntasList.get(idx).getPregunta());
+        String[] respuestas = {preguntasList.get(idx).getOpcion1(),preguntasList.get(idx).getOpcion2(),
+        preguntasList.get(idx).getOpcion3(),preguntasList.get(idx).getOpcion4()};
 
-        // IMAGEN ------------------------------------------------
-        imageM = (ImageView) root.findViewById(R.id.imageM);
-        imageM.setVisibility(View.VISIBLE);
-        Resources rImages = root.getResources();
-        //Drawable idImages = ((ActivityPreguntas) getActivity()).getImageId();
-        //imageM.setImageDrawable(idImages);
-        //imageM.setImageResource(((ActivityPreguntas)getActivity()).getImageId());
-        imageM.setImageResource(preguntasList.get(idx).getMultimedia());
+        lv = (ListView) root.findViewById(R.id.listView);
 
-        //Toast.makeText(getActivity(),"Imagen", Toast.LENGTH_LONG).show();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.list_item, respuestas);
+
+        lv.setAdapter(adapter);
+
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(preguntasList.get(idx).getRespuesta() == i+1){
+                    lv.getChildAt(i).setBackgroundColor(Color.parseColor("#B5DD86"));
+                    ((ActivityPreguntas) getActivity()).addAcierto();
+                }else{
+                    lv.getChildAt(i).setBackgroundColor(Color.parseColor("#CC7474"));
+                    ((ActivityPreguntas) getActivity()).addFallo();
+                }
+            }
+        });
 
         return root;
-        //return inflater.inflate(R.layout.fragment_image, container, false);
     }
 }

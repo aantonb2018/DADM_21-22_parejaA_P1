@@ -37,8 +37,6 @@ public class RadiobuttonFragment extends Fragment {
 
     private RadioButton radio[] = new RadioButton[4];
 
-    MediaPlayer sfx_mal;
-    MediaPlayer sfx_bien;
 
     List<PreguntasQuiz> preguntasList;
 
@@ -143,12 +141,10 @@ public class RadiobuttonFragment extends Fragment {
 
         if(respuestaSelec != -1) {
             if (preguntasList.get(idx).getRespuesta() == respuestaSelec + 1) {
-                sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
-                sfx_bien.start();
+                radio[respuestaSelec].setTextColor(Color.parseColor("#B5DD86"));
                 ((ActivityPreguntas) getActivity()).addAcierto();
             } else {
-                sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
-                sfx_mal.start();
+                radio[respuestaSelec].setTextColor(Color.parseColor("#CC7474"));
                 ((ActivityPreguntas) getActivity()).addFallo();
             }
         }

@@ -89,6 +89,7 @@ public class AudioFragment extends Fragment {
 
         idx = ((ActivityPreguntas)getActivity()).getSeleccion();
 
+
         AppDatabase db = AppDatabase.getInstance(root.getContext());
         PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
         preguntasList = repo.getAllItems();
@@ -133,7 +134,7 @@ public class AudioFragment extends Fragment {
             }
         });
 
-        Toast.makeText(getActivity(),"Audio", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity(),"Audio", Toast.LENGTH_LONG).show();
 
         return root;
     }
@@ -164,6 +165,13 @@ public class AudioFragment extends Fragment {
                 break;
 
         }
+    }
+
+    @Override
+    public void onStop() {
+        mediaplayer.release();
+        mediaplayer = null;
+        super.onStop();
     }
 
 }

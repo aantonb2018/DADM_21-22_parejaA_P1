@@ -37,8 +37,6 @@ public class ButtonFragment extends Fragment {
     private TextView buttonQ;
     private ImageView buttonI;
 
-    MediaPlayer sfx_mal;
-    MediaPlayer sfx_bien;
 
     List<PreguntasQuiz> preguntasList;
 
@@ -133,14 +131,10 @@ public class ButtonFragment extends Fragment {
         if(preguntasList.get(idx).getRespuesta() == respuestaSelec+1){
             //if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
             //Si la respuestaSeleccionada coincide con la almacenada en el array de soluciones...
-            sfx_bien = MediaPlayer.create(getContext(),R.raw.correcto);
-            sfx_bien.start();
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#B5DD86"));
             ((ActivityPreguntas) getActivity()).addAcierto();
         }else{
             //si no es el caso...
-            sfx_mal = MediaPlayer.create(getContext(),R.raw.incorrecto);
-            sfx_mal.start();
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#CC7474"));
             ((ActivityPreguntas) getActivity()).addFallo();
         }

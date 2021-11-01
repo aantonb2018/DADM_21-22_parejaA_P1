@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -18,6 +20,11 @@ public class Ajustes extends AppCompatActivity {
     AudioManager audioManager;
     Button btn_vol;
 
+    private RadioButton radioBut[] = new RadioButton[3];
+    private RadioButton radioDif[] = new RadioButton[3];
+
+    int numPreguntas, dificultad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,77 @@ public class Ajustes extends AppCompatActivity {
         // JUEGO EN PANTALLA COMPLETA
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = ajustes.edit();
+
+        numPreguntas = ajustes.getInt("key_num", 10);
+        dificultad = ajustes.getInt("key_dif", 0);
+
+        // RADIOBUTTONS ----------------------------------------------
+        radioBut[0] = (RadioButton) findViewById(R.id.radioBut_cinco);
+        radioBut[1] = (RadioButton) findViewById(R.id.radioBut_diez);
+        radioBut[2] = (RadioButton) findViewById(R.id.radioBut_quince);
+
+        switch(numPreguntas){
+            case 5:
+                radioBut[0].setChecked(true);
+                break;
+            case 10:
+                radioBut[1].setChecked(true);
+                break;
+            case 15:
+                radioBut[2].setChecked(true);
+                break;
+        }
+
+        radioDif[0] = (RadioButton) findViewById(R.id.radioBut_libre);
+        radioDif[1] = (RadioButton) findViewById(R.id.radioBut_facil);
+        radioDif[2] = (RadioButton) findViewById(R.id.radioBut_medio);
+
+        switch(dificultad){
+            case 0:
+                radioDif[0].setChecked(true);
+                break;
+            case 1:
+                radioDif[1].setChecked(true);
+                break;
+            case 2:
+                radioDif[2].setChecked(true);
+                break;
+        }
+
+        radioBut[0].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                selectNum(5);
+            }
+        });
+        radioBut[1].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                selectNum(10);
+            }
+        });
+        radioBut[2].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                selectNum(15);
+            }
+        });
+
+        radioDif[0].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                selectDif(0);
+            }
+        });
+        radioDif[1].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                selectDif(1);
+            }
+        });
+        radioDif[2].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                selectDif(2);
+            }
+        });
 
         // #####################################################################
         // BARRA VOLUMEN
@@ -78,6 +156,10 @@ public class Ajustes extends AppCompatActivity {
         btn_vol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editor.putInt("key_num", numPreguntas);
+                editor.putInt("key_dif", dificultad);
+
+                editor.commit(); // commit changes
 
                 // se pasa a la siguiente actividad
                 Intent empezar = new Intent(Ajustes.this, MenuPrincipal.class);
@@ -86,5 +168,13 @@ public class Ajustes extends AppCompatActivity {
                 startActivity(empezar);
             }
         });
+    }
+
+    public void selectNum(int i){
+        numPreguntas = i;
+    }
+
+    public void selectDif(int i){
+        dificultad = i;
     }
 }

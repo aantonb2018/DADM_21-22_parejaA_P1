@@ -100,9 +100,17 @@ public class VideoFragment extends Fragment {
         mediaController.setAnchorView(videoV);
         videoV.setMediaController(mediaController);
 
-        Toast.makeText(getActivity(),"Idx: " + idx + " Multimedia: " + preguntasList.get(idx).getMultimedia(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity(),"Idx: " + idx + " Multimedia: " + preguntasList.get(idx).getMultimedia(), Toast.LENGTH_LONG).show();
 
         return root;
     }
+
+    /*
+    @Override
+    public void onStop() {
+        mediaplayer.release();
+        mediaplayer = null;
+        super.onStop();
+    }*/
 
 }

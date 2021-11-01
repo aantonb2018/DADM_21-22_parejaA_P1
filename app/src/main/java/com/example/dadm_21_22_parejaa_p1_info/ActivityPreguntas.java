@@ -6,8 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -50,7 +52,7 @@ public class ActivityPreguntas extends AppCompatActivity {
     private int soluciones[]; //Array con los indices de las soluciones correctas del array de arrays preguntas
     private int seleccion[]; //Indice de las preguntas seleccionadas
     int aciertos, fallos = 0;
-    int longitud;
+    int longitud, dificultad;
 
     List<PreguntasQuiz> preguntasList;
 
@@ -69,6 +71,9 @@ public class ActivityPreguntas extends AppCompatActivity {
     int resourceId2 = R.raw.audio35;
     int resourceId3 = R.raw.video45;
 
+    MediaPlayer sfx_mal;
+    MediaPlayer sfx_bien;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,16 +90,21 @@ public class ActivityPreguntas extends AppCompatActivity {
                 fetchPreguntas(preguntas);
             }
         });*/
+        dificultad = 0;
+        longitud = 10;
 
+        SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0);
+        longitud = ajustes.getInt("key_num", 10);
+        dificultad = ajustes.getInt("key_dif", 0);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             nick = extras.getString("nick");
         }
 
-        longitud = 10;
 
-        seleccion = new int[10];
+
+        seleccion = new int[longitud];
 
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
 
@@ -150,7 +160,10 @@ public class ActivityPreguntas extends AppCompatActivity {
 
         seleccionarPreguntas();
 
-        //Toast.makeText(ActivityPreguntas.this,"longitud " + longitud, Toast.LENGTH_LONG).show();
+        Toast.makeText(ActivityPreguntas.this,"longitud " + longitud + " dificultad " + dificultad, Toast.LENGTH_LONG).show();
+
+        sfx_bien = MediaPlayer.create(this,R.raw.correcto);
+        sfx_mal = MediaPlayer.create(this,R.raw.incorrecto);
 
         /*
         Resources resources = root.getResources();
@@ -162,13 +175,13 @@ public class ActivityPreguntas extends AppCompatActivity {
         //iv.setImageDrawable(imageId);
 
         pregunta = (TextView) findViewById(R.id.pregunta);
-        pregunta.setText(idxPregunta + "/10");
+        pregunta.setText("-" + idxPregunta + "/" + longitud + "-");
 
         acierto = (TextView) findViewById(R.id.acierto);
-        acierto.setText(aciertos + "/10");
+        acierto.setText("-" + aciertos + "-");
 
         fallo = (TextView) findViewById(R.id.fallo);
-        fallo.setText(fallos + "/10");
+        fallo.setText("-" + fallos + "-");
 
         fragManager = getSupportFragmentManager();
         fragManager.beginTransaction().replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
@@ -216,7 +229,22 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     private void seleccionarPreguntas(){
         boolean sinRepetir = true;
-        for(int i = 0; i < longitud - 3; i++){
+        int numA = 0, numV = 0;
+        switch(longitud){
+            case 5:
+                numA = 2;
+                numV = 1;
+                break;
+            case 10:
+                numA = 3;
+                numV = 2;
+                break;
+            case 15:
+                numA = 4;
+                numV = 3;
+        }
+
+        for(int i = 0; i < longitud - (numA + numV); i++){
             do{
                 sinRepetir = true;
                 seleccion[i] = (int) Math.floor(Math.random()*(29-0+1)+0);
@@ -228,7 +256,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }while(sinRepetir == false);
 
         }
-        for(int i = longitud - 3; i < longitud - 1; i++){
+        for(int i = longitud - (numA + numV); i < longitud - numV; i++){
             do{
                 sinRepetir = true;
                 seleccion[i] = (int) Math.floor(Math.random()*(42-30+1)+30);
@@ -240,7 +268,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }while(sinRepetir == false);
 
         }
-        for(int i = longitud - 1; i < longitud; i++){
+        for(int i = longitud - numV; i < longitud; i++){
             do{
                 sinRepetir = true;
                 seleccion[i] = (int) Math.floor(Math.random()*(49-43+1)+43);
@@ -335,19 +363,27 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     public void addAcierto(){
         aciertos++;
-        acierto.setText(aciertos + "/10");
+        sfx_bien.release();
+        sfx_bien = null;
+        sfx_bien = MediaPlayer.create(this,R.raw.correcto);
+        sfx_bien.start();
+        acierto.setText("-" + aciertos + "-");
         addIdxPregunta();
     }
 
     public void addFallo(){
         fallos++;
-        fallo.setText(fallos + "/10");
+        sfx_mal.release();
+        sfx_mal = null;
+        sfx_mal = MediaPlayer.create(this,R.raw.incorrecto);
+        sfx_mal.start();
+        fallo.setText("-" + fallos + "-");
         addIdxPregunta();
     }
 
     public void addIdxPregunta(){
         idxPregunta++;
-        pregunta.setText(idxPregunta + "/10");
+        pregunta.setText("-" + idxPregunta + "/" + longitud + "-");
 
         if(idxPregunta < longitud) {//Si no se esta en la ultima pregunta...
             FragmentTransaction fragTransaction = fragManager.beginTransaction();
@@ -368,7 +404,7 @@ public class ActivityPreguntas extends AppCompatActivity {
                     break;
                 case 3:
                     //SPINNER
-                    fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
+                    fragTransaction.replace(R.id.fragmentContainerView, new ListviewFragment(), "FRAGMENT_QUESTION");
                     //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
             }

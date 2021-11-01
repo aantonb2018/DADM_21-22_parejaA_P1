@@ -46,17 +46,21 @@ public class Resultados extends AppCompatActivity {
         ib_volverMenu = (Button) findViewById(R.id.btn_volverMenu);
         // -------------------------------------------------------------
 
-        puntuacion.setText(nick + " - " + score + "/10");
+        SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0);
+        int longitud = ajustes.getInt("key_num", 10);
 
-        if(score < 5){
+        puntuacion.setText(nick + " - " + score + "/" + longitud);
+
+
+        if(((score*10)/longitud) < 5){
             puntuacion.setTextColor(Color.parseColor("#FF000000"));
             comentario.setText("Es una puntuación un poco baja, seguro que puedes hacerlo mejor");
             comentario.setTextColor(Color.parseColor("#FF000000"));
-        }else if(score > 4 && score < 9){
+        }else if(((score*10)/longitud) > 4 && ((score*10)/longitud) < 9){
             puntuacion.setTextColor(Color.parseColor("#FF000000"));
             comentario.setText("Has aprobado con creces. Eres todo un entendido del anime");
             comentario.setTextColor(Color.parseColor("#FF000000"));
-        }else if(score > 8 && score < 11){
+        }else if(((score*10)/longitud) > 8){
             puntuacion.setTextColor(Color.parseColor("#FF000000"));
             comentario.setText("Eres un auténtico otaku, estamos a tus pies sensei");
             comentario.setTextColor(Color.parseColor("#FF000000"));
