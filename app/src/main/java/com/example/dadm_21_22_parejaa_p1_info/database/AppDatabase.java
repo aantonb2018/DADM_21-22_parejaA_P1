@@ -17,7 +17,7 @@ import androidx.room.RoomDatabase;
  */
 @Database(entities = {
         PreguntasQuiz.class //Tabla de items
-}, version = 5 //version de la db
+}, version = 6 //version de la db
 )
 public abstract class AppDatabase extends RoomDatabase {
 

@@ -57,8 +57,13 @@ public class PreguntasQuiz {
     @ColumnInfo(name = "tipo")
     private int tipo;
 
+    @NonNull
     @ColumnInfo(name = "multimedia")
     private int multimedia;
+
+    @NonNull
+    @ColumnInfo(name = "nivel")
+    private int nivel;
 
 
     /******************************************************************************
@@ -134,6 +139,14 @@ public class PreguntasQuiz {
 
     public void setMultimedia(int multimedia) {
         this.multimedia = multimedia;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
 

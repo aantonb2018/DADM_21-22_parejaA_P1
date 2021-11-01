@@ -17,6 +17,7 @@ public class MenuPrincipal extends AppCompatActivity {
     EditText inputTexto;
     Button btn_empezar;
     Button btn_config;
+    Button btn_clas;
     MediaPlayer sfx;
 
     @Override
@@ -32,6 +33,7 @@ public class MenuPrincipal extends AppCompatActivity {
         inputTexto = (EditText) findViewById(R.id.txt_nombre);
         btn_empezar = (Button) findViewById(R.id.btn_jugar);
         btn_config = (Button) findViewById(R.id.btn_ajustes);
+        btn_clas = (Button) findViewById(R.id.btn_clasificacion);
 
         // definición de evento onClick del botón "JUGAR"
         btn_empezar.setOnClickListener(new View.OnClickListener() {
@@ -57,16 +59,18 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent ajustes = new Intent(MenuPrincipal.this, Ajustes.class);
+                startActivity(ajustes);
 
-                // si el campo de input está vacío se lanza un mensaje pidiendo el nombre
-                if ((inputTexto.getText().toString()).isEmpty()){
-                    Toast.makeText(MenuPrincipal.this,"Introduce un nombre", Toast.LENGTH_LONG).show();
+            }
+        });
 
-                    // en caso contrario, se pasa a la siguiente actividad
-                    Intent ajustes = new Intent(MenuPrincipal.this, Ajustes.class);
-                    ajustes.putExtra("nick", (inputTexto.getText().toString()));
-                    startActivity(ajustes);
-                }
+        btn_clas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent irClas = new Intent(MenuPrincipal.this,ClasificacionActivity.class);
+                startActivity(irClas);
+                finish();
             }
         });
     }

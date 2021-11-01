@@ -26,7 +26,7 @@
             android:text="@string/string_ajustes"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="75dp"
+            android:textSize="70dp"
             tools:text="@string/string_ajustes" />
 
         <LinearLayout
@@ -47,32 +47,38 @@
                 tools:text="@string/string_numPreg" />
 
             <RadioGroup
-                android:id="@+id/radioGroup_numPreg"
+                android:id="@+id/radioGroup_clas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioBut_cinco"
+                    android:id="@+id/radioBut_libre_clas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="5" />
+                    android:fontFamily="@font/kerokero"
+                    android:text="5"
+                    android:textSize="20sp" />
 
                 <RadioButton
-                    android:id="@+id/radioBut_diez"
+                    android:id="@+id/radioBut_facil_clas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10" />
+                    android:fontFamily="@font/kerokero"
+                    android:text="10"
+                    android:textSize="20sp" />
 
                 <RadioButton
-                    android:id="@+id/radioBut_quince"
+                    android:id="@+id/radioBut_medio_clas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="15" />
+                    android:fontFamily="@font/kerokero"
+                    android:text="15"
+                    android:textSize="20sp" />
             </RadioGroup>
 
             <TextView
@@ -117,19 +123,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Libre" />
+                    android:fontFamily="@font/kerokero"
+                    android:text="Libre"
+                    android:textSize="20sp" />
 
                 <RadioButton
                     android:id="@+id/radioBut_facil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fácil" />
+                    android:fontFamily="@font/kerokero"
+                    android:text="Fácil"
+                    android:textSize="20sp" />
 
                 <RadioButton
                     android:id="@+id/radioBut_medio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Medio" />
+                    android:fontFamily="@font/kerokero"
+                    android:text="Medio"
+                    android:textSize="20sp" />
 
             </RadioGroup>
 

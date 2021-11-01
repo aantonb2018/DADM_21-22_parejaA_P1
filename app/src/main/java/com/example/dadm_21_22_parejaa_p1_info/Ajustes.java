@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 public class Ajustes extends AppCompatActivity {
 
@@ -41,9 +40,9 @@ public class Ajustes extends AppCompatActivity {
         dificultad = ajustes.getInt("key_dif", 0);
 
         // RADIOBUTTONS ----------------------------------------------
-        radioBut[0] = (RadioButton) findViewById(R.id.radioBut_cinco);
-        radioBut[1] = (RadioButton) findViewById(R.id.radioBut_diez);
-        radioBut[2] = (RadioButton) findViewById(R.id.radioBut_quince);
+        radioBut[0] = (RadioButton) findViewById(R.id.radioBut_libre_clas);
+        radioBut[1] = (RadioButton) findViewById(R.id.radioBut_facil_clas);
+        radioBut[2] = (RadioButton) findViewById(R.id.radioBut_medio_clas);
 
         switch(numPreguntas){
             case 5:

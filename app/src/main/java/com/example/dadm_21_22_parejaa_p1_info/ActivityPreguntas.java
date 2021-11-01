@@ -65,6 +65,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             R.raw.audio36, R.raw.audio37, R.raw.audio38, R.raw.audio39, R.raw.audio40, R.raw.audio41, R.raw.audio42, R.raw.audio43,
             R.raw.video44, R.raw.video45, R.raw.video46, R.raw.video47, R.raw.video48, R.raw.video49, R.raw.video50};//Array con las imagenes asociadas al trivial
 
+    private int[] nivel = {1,2,1,1,2,1,2,1,1,1,2,2,1,1,2,2,2,2,1,2,1,1,2,2,1,1,1,1,2,2,1,2,1,2,1,2,2,2,2,1,1,1,2,2,2,1,2,2,1,1,1};
     //Resources resources = getResources();
     //Drawable imageId = resources.getDrawable(resources.getIdentifier(R.id.pregunta, "drawable", getPackageName()));
     int resourceId = R.drawable.image17;
@@ -122,8 +123,8 @@ public class ActivityPreguntas extends AppCompatActivity {
         //pQ.setTipo(3);
 
         /*
-        PreguntasQuiz[] pQ = new PreguntasQuiz[50];
-        for(int i = 0; i < 50; i++){
+        PreguntasQuiz[] pQ = new PreguntasQuiz[51];
+        for(int i = 0; i < 51; i++){
             pQ[i] = new PreguntasQuiz();
             //pQ[i].setItemId(i);
             pQ[i].setPregunta(preguntas[i][0]);
@@ -140,10 +141,10 @@ public class ActivityPreguntas extends AppCompatActivity {
                 pQ[i].setTipo(2);
             }
             pQ[i].setMultimedia(multimedia[i]);
-
+            pQ[i].setNivel(nivel[i]);
             repo.insertItem(pQ[i]);
-        }
-        */
+        }*/
+
         /*
         PreguntasQuiz pQ = repo.findItemById(40);
         pQ.setOpcion1("Meliodas");
@@ -151,16 +152,17 @@ public class ActivityPreguntas extends AppCompatActivity {
 
 
         preguntasList = repo.getAllItems();
+        /*
         for(PreguntasQuiz i : preguntasList) {
             Log.d("Prueba Database", "Num Pregunta: " + i.getItemId() + ", Pregunta: " +
                     i.getPregunta() + ", Respuesta: " + i.getRespuesta() + ", Opcion1: " + i.getOpcion1() +
                     ", Opcion2: " + i.getOpcion2() + ", Opcion3: " + i.getOpcion3() + ", Opcion4: " + i.getOpcion4() +
-                    ", Tipo: " + i.getTipo() + ", Id Multimedia: " + i.getMultimedia());
-        }
+                    ", Tipo: " + i.getTipo() + ", Id Multimedia: " + i.getMultimedia() + ", Nivel: " + i.getNivel());
+        }*/
 
         seleccionarPreguntas();
 
-        Toast.makeText(ActivityPreguntas.this,"longitud " + longitud + " dificultad " + dificultad, Toast.LENGTH_LONG).show();
+        //Toast.makeText(ActivityPreguntas.this,"longitud " + longitud + " dificultad " + dificultad, Toast.LENGTH_LONG).show();
 
         sfx_bien = MediaPlayer.create(this,R.raw.correcto);
         sfx_mal = MediaPlayer.create(this,R.raw.incorrecto);
@@ -271,7 +273,7 @@ public class ActivityPreguntas extends AppCompatActivity {
         for(int i = longitud - numV; i < longitud; i++){
             do{
                 sinRepetir = true;
-                seleccion[i] = (int) Math.floor(Math.random()*(49-43+1)+43);
+                seleccion[i] = (int) Math.floor(Math.random()*(50-43+1)+43);
                 for(int j = 0; j < i; j++){
                     if(seleccion[i] == seleccion[j]){
                         sinRepetir = false;
