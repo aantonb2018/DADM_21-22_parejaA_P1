@@ -49,7 +49,7 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     List<PreguntasQuiz> preguntasList;
 
-    /* Usado en la primera entrega y para llenar de valores la BD
+    //Usado en la primera entrega y para llenar de valores la BD
     private int[] multimedia = {R.drawable.image0, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
             R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image8,R.drawable.image9,R.drawable.image10,
             R.drawable.image11,R.drawable.image12,R.drawable.image13,R.drawable.image14,R.drawable.image15,R.drawable.image16,
@@ -60,7 +60,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             R.raw.video44, R.raw.video45, R.raw.video46, R.raw.video47, R.raw.video48, R.raw.video49, R.raw.video50};//Array con las imagenes asociadas al trivial
 
     private int[] nivel = {1,2,1,1,2,1,2,1,1,1,2,2,1,1,2,2,2,2,1,2,1,1,2,2,1,1,1,1,2,2,1,2,1,2,1,2,2,2,2,1,1,1,2,2,2,1,2,2,1,1,1};
-    */
+
 
     MediaPlayer sfx_mal;
     MediaPlayer sfx_bien;
@@ -91,31 +91,34 @@ public class ActivityPreguntas extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
         PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
 
-        //leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
+        if(ajustes.getBoolean("filled_BD", false) != true) {
+            leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
 
-        /*Iteracion usada para introducir los valores al repositorio
-        PreguntasQuiz[] pQ = new PreguntasQuiz[51];
-        for(int i = 0; i < 51; i++){
-            pQ[i] = new PreguntasQuiz();
-            //pQ[i].setItemId(i);
-            pQ[i].setPregunta(preguntas[i][0]);
-            pQ[i].setRespuesta(soluciones[i]);
-            pQ[i].setOpcion1(preguntas[i][1]);
-            pQ[i].setOpcion2(preguntas[i][2]);
-            pQ[i].setOpcion3(preguntas[i][3]);
-            pQ[i].setOpcion4(preguntas[i][4]);
-            if(i < 30){
-                pQ[i].setTipo(0);
-            }else if(i > 29 && i <44){
-                pQ[i].setTipo(1);
-            }else{
-                pQ[i].setTipo(2);
+            //Iteracion usada para introducir los valores al repositorio
+            PreguntasQuiz[] pQ = new PreguntasQuiz[51];
+            for (int i = 0; i < 51; i++) {
+                pQ[i] = new PreguntasQuiz();
+                //pQ[i].setItemId(i);
+                pQ[i].setPregunta(preguntas[i][0]);
+                pQ[i].setRespuesta(soluciones[i]);
+                pQ[i].setOpcion1(preguntas[i][1]);
+                pQ[i].setOpcion2(preguntas[i][2]);
+                pQ[i].setOpcion3(preguntas[i][3]);
+                pQ[i].setOpcion4(preguntas[i][4]);
+                if (i < 30) {
+                    pQ[i].setTipo(0);
+                } else if (i > 29 && i < 44) {
+                    pQ[i].setTipo(1);
+                } else {
+                    pQ[i].setTipo(2);
+                }
+                pQ[i].setMultimedia(multimedia[i]);
+                pQ[i].setNivel(nivel[i]);
+                repo.insertItem(pQ[i]);
             }
-            pQ[i].setMultimedia(multimedia[i]);
-            pQ[i].setNivel(nivel[i]);
-            repo.insertItem(pQ[i]);
-        }*/
-
+            SharedPreferences.Editor editor = ajustes.edit();
+            editor.putBoolean("filled_BD", true);
+        }
         preguntasList = repo.getAllItems();
 
         switch(dificultad){
@@ -156,12 +159,11 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     }
 
-    /* Usado en la primera entrega y para introducir valores a la BD
+    //Usado en la primera entrega y para introducir valores a la BD
     private void leerItems(){
 
         String auxPreguntas[] = getResources().getStringArray(R.array.test); //Obtenemos los items que son las preguntas y respuestas
         //auxPreguntas = randomizar(auxPreguntas);
-        longitud = auxPreguntas.length;
         preguntas = new String[auxPreguntas.length][5];
         soluciones = new int[auxPreguntas.length];
 
@@ -178,7 +180,7 @@ public class ActivityPreguntas extends AppCompatActivity {
                 preguntas[i][j] = respuestas[j]; //Guardamos el array que contiene una pregunta y sus respuestas dentro del array de todas las preguntas
             }
         }
-    }*/
+    }
 
     //Seleccion de preguntas aleatorias, garantizado unos minimos de cada tipo de multiemdia y sin repeticiones
     private void seleccionarPreguntas(){
@@ -198,7 +200,7 @@ public class ActivityPreguntas extends AppCompatActivity {
                 numV = 3;
         }
 
-        for(int i = 0; i < longitud - (numA + numV); i++){
+        for(int i = 0; i < (longitud - (numA + numV)); i++){
             do{
                 sinRepetir = true;
                 seleccion[i] = (int) Math.floor(Math.random()*(29-0+1)+0);
@@ -210,7 +212,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }while(sinRepetir == false);
 
         }
-        for(int i = longitud - (numA + numV); i < longitud - numV; i++){
+        for(int i = (longitud - (numA + numV)); i < (longitud - numV); i++){
             do{
                 sinRepetir = true;
                 seleccion[i] = (int) Math.floor(Math.random()*(42-30+1)+30);
@@ -222,7 +224,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }while(sinRepetir == false);
 
         }
-        for(int i = longitud - numV; i < longitud; i++){
+        for(int i = (longitud - numV); i < longitud; i++){
             do{
                 sinRepetir = true;
                 seleccion[i] = (int) Math.floor(Math.random()*(50-43+1)+43);

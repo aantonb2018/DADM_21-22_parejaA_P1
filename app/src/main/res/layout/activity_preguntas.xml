@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineMainHor1"
-        tools:layout="@layout/fragment_video" />
+        tools:layout="@layout/fragment_image" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
