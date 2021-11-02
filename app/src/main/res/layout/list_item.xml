@@ -3,8 +3,9 @@
 <TextView android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FF9800"
-    android:textSize="24sp"
-    android:padding="10sp"
+    android:textSize="24dp"
+    android:padding="10dp"
     android:fontFamily="@font/kerokero"
+    android:textAlignment="center"
     android:textColor="#ffffff"
     xmlns:android="http://schemas.android.com/apk/res/android"/>
