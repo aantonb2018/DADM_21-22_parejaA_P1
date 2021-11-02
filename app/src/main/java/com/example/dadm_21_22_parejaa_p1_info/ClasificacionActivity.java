@@ -30,7 +30,6 @@ public class ClasificacionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clasificacion);
 
         // JUEGO A PANTALLA COMPLETA
-        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         leerRankings(1);

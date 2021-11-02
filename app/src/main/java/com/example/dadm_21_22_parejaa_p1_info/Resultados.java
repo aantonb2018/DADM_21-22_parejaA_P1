@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.media.MediaParser;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -30,8 +31,8 @@ public class Resultados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultados);
 
-        // ESCONDER TITULO DE ACTIVIDAD
-        getSupportActionBar().hide();
+        // JUEGO A PANTALLA COMPLETA
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

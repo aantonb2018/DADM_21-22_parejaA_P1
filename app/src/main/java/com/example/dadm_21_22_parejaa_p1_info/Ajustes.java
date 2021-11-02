@@ -30,7 +30,6 @@ public class Ajustes extends AppCompatActivity {
         setContentView(R.layout.activity_ajustes);
 
         // JUEGO EN PANTALLA COMPLETA
-        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode

@@ -70,7 +70,6 @@ public class ActivityPreguntas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
         // JUEGO EN PANTALLA COMPLETA
-        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         dificultad = 0;
