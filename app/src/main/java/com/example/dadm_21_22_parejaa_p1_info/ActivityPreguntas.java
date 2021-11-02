@@ -29,13 +29,6 @@ import java.util.Random;
 
 public class ActivityPreguntas extends AppCompatActivity {
 
-    // variables para la BASE DE DATOS ------------
-    /*
-    private ViewModelPreguntas viewModelPreguntas;
-    List<TablaPreguntas> listaPreguntas;
-    TablaPreguntas preguntaActual;
-    int pregID = 0;*/
-    // --------------------------------------------
 
     private String nick;
 
@@ -56,6 +49,7 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     List<PreguntasQuiz> preguntasList;
 
+    /* Usado en la primera entrega y para llenar de valores la BD
     private int[] multimedia = {R.drawable.image0, R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
             R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image8,R.drawable.image9,R.drawable.image10,
             R.drawable.image11,R.drawable.image12,R.drawable.image13,R.drawable.image14,R.drawable.image15,R.drawable.image16,
@@ -66,11 +60,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             R.raw.video44, R.raw.video45, R.raw.video46, R.raw.video47, R.raw.video48, R.raw.video49, R.raw.video50};//Array con las imagenes asociadas al trivial
 
     private int[] nivel = {1,2,1,1,2,1,2,1,1,1,2,2,1,1,2,2,2,2,1,2,1,1,2,2,1,1,1,1,2,2,1,2,1,2,1,2,2,2,2,1,1,1,2,2,2,1,2,2,1,1,1};
-    //Resources resources = getResources();
-    //Drawable imageId = resources.getDrawable(resources.getIdentifier(R.id.pregunta, "drawable", getPackageName()));
-    int resourceId = R.drawable.image17;
-    int resourceId2 = R.raw.audio35;
-    int resourceId3 = R.raw.video45;
+    */
 
     MediaPlayer sfx_mal;
     MediaPlayer sfx_bien;
@@ -82,70 +72,28 @@ public class ActivityPreguntas extends AppCompatActivity {
         // JUEGO EN PANTALLA COMPLETA
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    /*
-        viewModelPreguntas = ViewModelProviders.of(this).get(ViewModelPreguntas.class);
-        viewModelPreguntas.get_todasPreguntasVIEWMODEL().observe(this, new Observer<List<TablaPreguntas>>() {
-            @Override
-            public void onChanged(List<TablaPreguntas> preguntas) {
 
-                fetchPreguntas(preguntas);
-            }
-        });*/
         dificultad = 0;
         longitud = 10;
 
         SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0);
-        longitud = ajustes.getInt("key_num", 10);
-        dificultad = ajustes.getInt("key_dif", 0);
+        longitud = ajustes.getInt("key_num", 10); //Numero de preguntas elegido por el usuario
+        dificultad = ajustes.getInt("key_dif", 0);//Dificultad de preguntas elegido por el usuario
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             nick = extras.getString("nick");
         }
 
-
-
         seleccion = new int[longitud];
-        int contFaciles = 0,contMedio = 0;
-        for(int x = 0; x < 30; x++){
-            if(nivel[x] == 1){contFaciles++;}
-            if(nivel[x] == 2){contMedio++;}
-        }
-        Toast.makeText(ActivityPreguntas.this,"Faciles Img: " + contFaciles +",Medio Img: " + contMedio, Toast.LENGTH_LONG).show();
-
-        contFaciles = contMedio = 0;
-
-        for(int x = 30; x < 44; x++){
-            if(nivel[x] == 1){contFaciles++;}
-            if(nivel[x] == 2){contMedio++;}
-        }
-        Toast.makeText(ActivityPreguntas.this,"Faciles Aud: " + contFaciles +",Medio Aud: " + contMedio, Toast.LENGTH_LONG).show();
-
-        contFaciles = contMedio = 0;
-
-        for(int x = 44; x < 51; x++){
-            if(nivel[x] == 1){contFaciles++;}
-            if(nivel[x] == 2){contMedio++;}
-        }
-        Toast.makeText(ActivityPreguntas.this,"Faciles Vid: " + contFaciles +",Medio Vid: " + contMedio, Toast.LENGTH_LONG).show();
 
 
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
-
-        /**
-         * creamos una instancia del repositorio de items
-         */
         PreguntasQuizRepository repo = new PreguntasQuizRepositoryImpl(db.itemDAO());
 
-        /**
-         * creamos un objeto de la tabla Item
-         */
         //leerItems(); //Metodo para leer los items de string.xml y poder usarlos en el MainActivity
 
-        //PreguntasQuiz pQ = new PreguntasQuiz();
-        //pQ.setTipo(3);
-
-        /*
+        /*Iteracion usada para introducir los valores al repositorio
         PreguntasQuiz[] pQ = new PreguntasQuiz[51];
         for(int i = 0; i < 51; i++){
             pQ[i] = new PreguntasQuiz();
@@ -168,50 +116,30 @@ public class ActivityPreguntas extends AppCompatActivity {
             repo.insertItem(pQ[i]);
         }*/
 
-        /*
-        PreguntasQuiz pQ = repo.findItemById(40);
-        pQ.setOpcion1("Meliodas");
-        repo.updateItem(pQ);*/
         preguntasList = repo.getAllItems();
+
         switch(dificultad){
             case 0:
                 seleccionarPreguntas();
                 break;
             case 1:
-                //preguntasList = repo.getAllEasy();
                 seleccionarPreguntasEasy();
                 break;
             case 2:
-                //preguntasList = repo.getAllMedium();
                 seleccionarPreguntasMedium();
                 break;
         }
-        //preguntasList = repo.getAllItems();
-        //List<PreguntasQuiz> preguntasList2;
-        //preguntasList2 = repo.getAllEasy();
 
+        /*Comprobacion de los elementos del repositorio
         for(PreguntasQuiz i : preguntasList) {
             Log.d("Prueba Database", "Num Pregunta: " + i.getItemId() + ", Pregunta: " +
                     i.getPregunta() + ", Respuesta: " + i.getRespuesta() + ", Opcion1: " + i.getOpcion1() +
                     ", Opcion2: " + i.getOpcion2() + ", Opcion3: " + i.getOpcion3() + ", Opcion4: " + i.getOpcion4() +
                     ", Tipo: " + i.getTipo() + ", Id Multimedia: " + i.getMultimedia() + ", Nivel: " + i.getNivel());
-        }
-
-
-
-        //Toast.makeText(ActivityPreguntas.this,"longitud " + longitud + " dificultad " + dificultad, Toast.LENGTH_LONG).show();
+        }*/
 
         sfx_bien = MediaPlayer.create(this,R.raw.correcto);
         sfx_mal = MediaPlayer.create(this,R.raw.incorrecto);
-
-        /*
-        Resources resources = root.getResources();
-        Drawable imageId = resources.getDrawable(resources.getIdentifier(multimediaSource, "drawable", root.getContext().getPackageName()));
-        iv.setImageDrawable(imageId);
-         */
-
-
-        //iv.setImageDrawable(imageId);
 
         pregunta = (TextView) findViewById(R.id.pregunta);
         pregunta.setText("-" + idxPregunta + "/" + longitud + "-");
@@ -225,24 +153,10 @@ public class ActivityPreguntas extends AppCompatActivity {
         fragManager = getSupportFragmentManager();
         fragManager.beginTransaction().replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
         fragManager.beginTransaction().replace(R.id.fragmentContainerMultimedia, new ImageFragment(), "FRAGMENT_MULTIMEDIA");
-        /*
-        fragManager2 = getSupportFragmentManager();
-        fragManager2.beginTransaction().replace(R.id.fragmentContainerMultimedia, new AudioFragment(), "FRAGMENT_MULTIMEDIA");
-        */
+
     }
 
-    /*
-    private void fetchPreguntas(List<TablaPreguntas> preguntas){
-
-        listaPreguntas = preguntas;
-
-        Collections.shuffle(listaPreguntas);
-
-        preguntaActual = listaPreguntas.get(pregID);
-
-
-    }*/
-
+    /* Usado en la primera entrega y para introducir valores a la BD
     private void leerItems(){
 
         String auxPreguntas[] = getResources().getStringArray(R.array.test); //Obtenemos los items que son las preguntas y respuestas
@@ -264,8 +178,9 @@ public class ActivityPreguntas extends AppCompatActivity {
                 preguntas[i][j] = respuestas[j]; //Guardamos el array que contiene una pregunta y sus respuestas dentro del array de todas las preguntas
             }
         }
-    }
+    }*/
 
+    //Seleccion de preguntas aleatorias, garantizado unos minimos de cada tipo de multiemdia y sin repeticiones
     private void seleccionarPreguntas(){
         boolean sinRepetir = true;
         int numA = 0, numV = 0;
@@ -319,24 +234,10 @@ public class ActivityPreguntas extends AppCompatActivity {
             }while(sinRepetir == false);
 
         }
-        /*
-        for (int i = longitud - 1; i > 1; i--)
-        {
-            Random random = new Random();
 
-            int index = random.nextInt(i + 1);
-            // Cambio
-            int intTemp = seleccion[index];
-            //int idTemp = imagenes[index];
-
-            seleccion[index] = seleccion[i];
-            //imagenes[index] = imagenes[i];
-
-            seleccion[i] = intTemp;
-            //imagenes[i] = idTemp;
-        }*/
     }
 
+    //Seleccion de preguntas faciles aleatorias, garantizado unos minimos de cada tipo de multiemdia y sin repeticiones
     private void seleccionarPreguntasEasy(){
         boolean sinRepetir = true;
         int numA = 0, numV = 0;
@@ -397,10 +298,9 @@ public class ActivityPreguntas extends AppCompatActivity {
 
         }
 
-
-
     }
 
+    //Seleccion de preguntas medias aleatorias, garantizado unos minimos de cada tipo de multiemdia y sin repeticiones
     private void seleccionarPreguntasMedium(){
         boolean sinRepetir = true;
         int numA = 0, numV = 0;
@@ -461,39 +361,6 @@ public class ActivityPreguntas extends AppCompatActivity {
 
         }
 
-
-
-    }
-
-    private void comprobarRespuesta(){
-        int respuestaSelec = grupoRespuestas.getCheckedRadioButtonId(); //Recoge el id de la respuesta marcada
-
-        if(soluciones[idxPregunta] == respuestaSelec){ //Comprueba si la respuesta es correcta o erronea
-            aciertos++;
-        }else{
-            fallos++;
-        }
-    }
-
-    private String[] randomizar(String[] aux)
-    {
-        //Cambia aleatoriamente las posiciones de las preguntas y las imagenes en sus arrays
-        Random random = new Random();
-        for (int i = aux.length - 1; i > 0; i--)
-        {
-            int index = random.nextInt(i + 1);
-            // Cambio
-            String textoTemp = aux[index];
-            //int idTemp = imagenes[index];
-
-            aux[index] = aux[i];
-            //imagenes[index] = imagenes[i];
-
-            aux[i] = textoTemp;
-            //imagenes[i] = idTemp;
-        }
-
-        return aux;
     }
 
     public String[][] getPreguntas(){
@@ -510,22 +377,6 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     public int getSeleccion(){
         return seleccion[idxPregunta];
-    }
-/*
-    public int[] getImagenes(){
-        return imagenes;
-    }*/
-
-    public int getImageId(){
-        return resourceId;
-    }
-
-    public int getAudioId(){
-        return resourceId2;
-    }
-
-    public int getVideoId(){
-        return resourceId3;
     }
 
     public void addAcierto(){
@@ -554,39 +405,31 @@ public class ActivityPreguntas extends AppCompatActivity {
 
         if(idxPregunta < longitud) {//Si no se esta en la ultima pregunta...
             FragmentTransaction fragTransaction = fragManager.beginTransaction();
-            //FragmentTransaction fragTransaction2 = fragManager2.beginTransaction();
             int fragType = 0 + (int) (Math.random() * 4);
             switch (fragType) {//Se escoge aleatoriamente un tipo de pregunta para la siguiente
                 case 0:
                     fragTransaction.replace(R.id.fragmentContainerView, new RadiobuttonFragment(), "FRAGMENT_QUESTION");
-                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 1:
                     fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
-                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 2:
                     fragTransaction.replace(R.id.fragmentContainerView, new CheckboxFragment(), "FRAGMENT_QUESTION");
-                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 3:
-                    //SPINNER
+                    //ListView donde antes habia un fragmento de Spinner
                     fragTransaction.replace(R.id.fragmentContainerView, new ListviewFragment(), "FRAGMENT_QUESTION");
-                    //fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
             }
             fragType = preguntasList.get(seleccion[idxPregunta]).getTipo();
-            switch (fragType) {//Se escoge aleatoriamente un tipo de pregunta para la siguiente
+            switch (fragType) {//Se escoge segun el tipo de multiemdia de la siguiente pregunta
                 case 0:
-                    //fragTransaction.replace(R.id.fragmentContainerView, new RadiobuttonFragment(), "FRAGMENT_QUESTION");
                     fragTransaction.replace(R.id.fragmentContainerMultimedia, new ImageFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 1:
-                    //fragTransaction.replace(R.id.fragmentContainerView, new ButtonFragment(), "FRAGMENT_QUESTION");
                     fragTransaction.replace(R.id.fragmentContainerMultimedia, new AudioFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
                 case 2:
-                    //fragTransaction.replace(R.id.fragmentContainerView, new CheckboxFragment(), "FRAGMENT_QUESTION");
                     fragTransaction.replace(R.id.fragmentContainerMultimedia, new VideoFragment(), "FRAGMENT_MULTIMEDIA");
                     break;
             }

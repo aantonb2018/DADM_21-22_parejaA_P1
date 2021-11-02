@@ -156,9 +156,5 @@ public class RadiobuttonFragment extends Fragment {
         radio[1].setText(preguntasList.get(idx).getOpcion2());
         radio[2].setText(preguntasList.get(idx).getOpcion3());
         radio[3].setText(preguntasList.get(idx).getOpcion4());
-        /*
-        for(int i = 0; i < radio.length; i++){
-            radio[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
-        }*/
     }
 }

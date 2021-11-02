@@ -96,18 +96,6 @@ public class AudioFragment extends Fragment {
 
         imageA = (TextView) root.findViewById(R.id.preguntaA);
         imageA.setText(preguntasList.get(idx).getPregunta());
-        /*
-        imageM = (ImageView) root.findViewById(R.id.imageM);
-        imageM.setVisibility(View.VISIBLE);
-        Resources rImages = root.getResources();
-        Drawable idImages = rImages.getRaw(rImages.getIdentifier(((ActivityPreguntas) getActivity()).getImageId(), "raw", root.getContext().getPackageName()));
-        imageM.setImageDrawable(idImages);
-        */
-        //Inicializamos la clase MediaPlayer asociandole el fichero de Audio
-        /*
-        int resID =   root.getResources().getIdentifier(((ActivityPreguntas) getActivity()).getAudioId(),"raw",root.getContext().getPackageName());
-
-        root.getContext().getResources().openRawResource(resID);*/
 
         mediaplayer = MediaPlayer.create(getContext(), preguntasList.get(idx).getMultimedia());
 
@@ -167,6 +155,7 @@ public class AudioFragment extends Fragment {
         }
     }
 
+    //Libera memoria del mediaplayer cuando el fragmento se cierrra
     @Override
     public void onStop() {
         mediaplayer.release();

@@ -129,7 +129,6 @@ public class ButtonFragment extends Fragment {
 
     public void comprobarRespuesta(int respuestaSelec){
         if(preguntasList.get(idx).getRespuesta() == respuestaSelec+1){
-            //if((((ActivityPreguntas)getActivity()).getSoluciones()[((ActivityPreguntas) getActivity()).getIdxPregunta()]) == respuestaSelec+1){
             //Si la respuestaSeleccionada coincide con la almacenada en el array de soluciones...
             button[respuestaSelec].setBackgroundColor(Color.parseColor("#B5DD86"));
             ((ActivityPreguntas) getActivity()).addAcierto();
@@ -141,14 +140,9 @@ public class ButtonFragment extends Fragment {
     }
 
     public void mostrarPreguntas(){
-        //buttonQ.setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][0]); //Escribe la pregunta actual en la pantalla
-
         button[0].setText(preguntasList.get(idx).getOpcion1());
         button[1].setText(preguntasList.get(idx).getOpcion2());
         button[2].setText(preguntasList.get(idx).getOpcion3());
         button[3].setText(preguntasList.get(idx).getOpcion4());
-        /*for(int i = 0; i < button.length; i++){
-            //button[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
-        }*/
     }
 }

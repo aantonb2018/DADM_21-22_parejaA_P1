@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -27,6 +28,9 @@ public class ClasificacionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clasificacion);
+
+        getSupportActionBar().hide();
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         leerRankings(1);
 
@@ -73,8 +77,7 @@ public class ClasificacionActivity extends AppCompatActivity {
     private void leerRankings(int dificultad){
         SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0);
         SharedPreferences.Editor editor = ajustes.edit();
-        //longitud = ajustes.getInt("key_num", 10);
-        //dificultad = ajustes.getInt("key_dif", 0);
+
         switch(dificultad){
             case 0:
                 for(int i = 0; i < 5; i++){

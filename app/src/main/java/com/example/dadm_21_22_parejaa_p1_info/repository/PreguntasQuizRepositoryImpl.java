@@ -5,74 +5,53 @@ import com.example.dadm_21_22_parejaa_p1_info.database.dao.ItemDAO;
 
 import java.util.List;
 
-/**
- * creamos una clase que implemente ItemRepository
- */
+//Implementacion de los metodos del repositorio
 public class PreguntasQuizRepositoryImpl implements PreguntasQuizRepository {
-    /**
-     * declaramos una variable global de nuestro DAO
-     */
+
     ItemDAO dao;
 
-    /**
-     * necesitamos un constructor que recibe una instancia de nuestro dao
-     * @param dao instancia de ItemDAO
-     */
+    //Constructor
     public PreguntasQuizRepositoryImpl(ItemDAO dao) {
         this.dao = dao;
     }
 
-    /**
-     * obtiene la lista de todos los items
-     * @return lista de items
-     */
+    //Devuelve todos los items del repositorio
     @Override
     public List<PreguntasQuiz> getAllItems() {
         return dao.getAll();
     }
 
+    //Devuelve todos los items de nivel:1 del repositorio
     @Override
     public List<PreguntasQuiz> getAllEasy() {
         return dao.getEasy();
     }
 
+    //Devuelve todos los items de nivel:2 del repositorio
     @Override
     public List<PreguntasQuiz> getAllMedium() {
         return dao.getMedium();
     }
 
-    /**
-     * obtiene un Item filtrado por id
-     * @param id del item
-     * @return un item
-     */
+    //Devuelve un item dado su identificador
     @Override
     public PreguntasQuiz findItemById(int id) {
         return dao.findById(id);
     }
 
-    /**
-     * inserta un item en la db
-     * @param item
-     */
+    //Inserta un item en el repositorio
     @Override
     public void insertItem(PreguntasQuiz item) {
         dao.insert(item);
     }
 
-    /**
-     * actualiza un item en la db
-     * @param item
-     */
+    //Actualiza un item de la BD
     @Override
     public void updateItem(PreguntasQuiz item) {
         dao.update(item);
     }
 
-    /**
-     * elimina un item de la db
-     * @param item
-     */
+    //Elimina un item de la BD
     @Override
     public void deleteItem(PreguntasQuiz item) {
         dao.delete(item);

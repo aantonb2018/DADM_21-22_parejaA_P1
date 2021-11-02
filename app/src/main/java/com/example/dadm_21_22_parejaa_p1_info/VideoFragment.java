@@ -92,7 +92,7 @@ public class VideoFragment extends Fragment {
         textV = (TextView) root.findViewById(R.id.preguntaA);
         textV.setText(preguntasList.get(idx).getPregunta());
 
-        //Inicializamos la clase MediaPlayer asociandole el fichero de Audio
+        //Inicializamos la clase MediaController asociandole el fichero de video
         videoV=(VideoView) root.findViewById(R.id.videoView);
         String path = "android.resource://" + getActivity().getPackageName() + "/" + preguntasList.get(idx).getMultimedia();
         videoV.setVideoURI(Uri.parse(path));
@@ -100,17 +100,8 @@ public class VideoFragment extends Fragment {
         mediaController.setAnchorView(videoV);
         videoV.setMediaController(mediaController);
 
-        //Toast.makeText(getActivity(),"Idx: " + idx + " Multimedia: " + preguntasList.get(idx).getMultimedia(), Toast.LENGTH_LONG).show();
-
         return root;
     }
 
-    /*
-    @Override
-    public void onStop() {
-        mediaplayer.release();
-        mediaplayer = null;
-        super.onStop();
-    }*/
 
 }

@@ -108,8 +108,7 @@ public class Resultados extends AppCompatActivity {
         SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0);
         SharedPreferences.Editor editor = ajustes.edit();
         int dificultad = ajustes.getInt("key_dif", 0);
-        //longitud = ajustes.getInt("key_num", 10);
-        //dificultad = ajustes.getInt("key_dif", 0);
+
         String nicks[] = new String[6];
         int puntos[] = new int[6];
         switch(dificultad){
@@ -137,26 +136,16 @@ public class Resultados extends AppCompatActivity {
         nicks[5] = nick;
         puntos[5] = score;
 
+        //Ordena el array descendentemente
         for (int i = 0; i < 5; i++)
         {
-
-            /* find the min element in the unsorted a[i .. aLength-1] */
-
-            /* assume the min is the first element */
-            //int auxValue = puntos[i];
-
-            /* test against elements after i to find the smallest */
             for (int j = i+1; j < 6; j++)
             {
-                /* if this element is less, then it is the new minimum */
                 if (puntos[i] < puntos[j])
                 {
-                    /* found new minimum; remember its index */
-                    //swap(i, auxIdx,puntos);
                     int temp = puntos[i];
                     puntos[i] = puntos[j];
                     puntos[j] = temp;
-                    //swap(i, auxIdx,nicks);
                     String auxTemp = nicks[i];
                     nicks[i] = nicks[j];
                     nicks[j] = auxTemp;
@@ -188,18 +177,6 @@ public class Resultados extends AppCompatActivity {
 
         editor.commit();
 
-    }
-
-    public void swap(int x, int y, int[] arr) {
-        int temp = arr[x];
-        arr[x] = arr[y];
-        arr[y] = temp;
-    }
-
-    public void swap(int x, int y, String[] arr) {
-        String temp = arr[x];
-        arr[x] = arr[y];
-        arr[y] = temp;
     }
 
 }

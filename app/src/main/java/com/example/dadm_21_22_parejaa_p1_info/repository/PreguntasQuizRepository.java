@@ -4,9 +4,7 @@ import com.example.dadm_21_22_parejaa_p1_info.database.entity.PreguntasQuiz;
 
 import java.util.List;
 
-/**
- * creamos una interface para nuestro repositorio de items
- */
+//Interfaz del repositorio de items
 public interface PreguntasQuizRepository {
 
     List<PreguntasQuiz> getAllItems();

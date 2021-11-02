@@ -5,70 +5,61 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-/**
- * Las clases que representan nuestras tablas deben estar anotadas con @Entity
- * opcionalmente se puede establecer el nombre de la tabla si queremos que nuestra
- * tabla y nuestra clase tengan nombre diferentes
- */
+//Tabla de estructura de las preguntas
 @Entity(tableName = "PreguntasQuiz")
 public class PreguntasQuiz {
 
-    /**
-     * Con Room todas nuestras tablas deben tener un primary key y la anotamos con @PrimaryKey
-     * ademas podemos definir si esta será auto generada o no (true/false)
-     */
+    //Clave primaria que funciona como id, se genera automaticamente al introducir el item en la BD
     @PrimaryKey(autoGenerate = true)
     private int itemId;
-    /**
-     * @ColumnInfo: opcionalmente podemos establecer el nombre de la columna
-     * por defecto la columna tendra el mismo nombre que la variable
-     * @NoNull: columna no acepta nulos
-     */
 
-    /**
-     * por defecto los tipos de datos primitivos no aceptan valores nulos
-     * establecemos un valor por defecto en false
-     */
+    //Columna de obligado valor que se corresponde con el indice de la respuesta
     @NonNull
     @ColumnInfo(name = "respuesta")
     private int respuesta;
 
+    //Columna de obligado valor que se corresponde con la pregunta
     @NonNull
     @ColumnInfo(name = "pregunta")
     private String pregunta;
 
+    //Columna de obligado valor que se corresponde con la primera opcion de respuesta
     @NonNull
     @ColumnInfo(name = "opcion1")
     private String opcion1;
 
+    //Columna de obligado valor que se corresponde con la segunda opcion de respuesta
     @NonNull
     @ColumnInfo(name = "opcion2")
     private String opcion2;
 
+    //Columna de obligado valor que se corresponde con la tercera opcion de respuesta
     @NonNull
     @ColumnInfo(name = "opcion3")
     private String opcion3;
 
+    //Columna de obligado valor que se corresponde con la cuarta opcion de respuesta
     @NonNull
     @ColumnInfo(name = "opcion4")
     private String opcion4;
 
+    //Columna de obligado valor que se corresponde con el indice que marca el tipo de multimedia asociado
     @NonNull
     @ColumnInfo(name = "tipo")
     private int tipo;
 
+    //Columna de obligado valor que se corresponde con el id del archivo multimedia a mostrar
     @NonNull
     @ColumnInfo(name = "multimedia")
     private int multimedia;
 
+    //Columna de obligado valor que se corresponde con la dificultad de la pregunta
     @NonNull
     @ColumnInfo(name = "nivel")
     private int nivel;
 
 
-    /******************************************************************************
-     * Importante no olvidar agregar los metodos get y set para cada columna
-     *****************************************************************************/
+   //Getters y setters de cada columna de la tabla
     public int getItemId() {
         return itemId;
     }

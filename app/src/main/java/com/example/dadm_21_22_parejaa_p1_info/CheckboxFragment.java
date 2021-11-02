@@ -157,9 +157,5 @@ public class CheckboxFragment extends Fragment {
         checkbox[1].setText(preguntasList.get(idx).getOpcion2());
         checkbox[2].setText(preguntasList.get(idx).getOpcion3());
         checkbox[3].setText(preguntasList.get(idx).getOpcion4());
-        /*
-        for(int i = 0; i < checkbox.length; i++){
-            checkbox[i].setText(((ActivityPreguntas)getActivity()).getPreguntas()[((ActivityPreguntas)getActivity()).getIdxPregunta()][i + 1]);//Escribe la respuesta del indice correspondiente en la pantalla
-        }*/
     }
 }

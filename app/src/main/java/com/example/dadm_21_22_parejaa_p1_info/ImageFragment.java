@@ -96,14 +96,8 @@ public class ImageFragment extends Fragment {
         imageM = (ImageView) root.findViewById(R.id.imageM);
         imageM.setVisibility(View.VISIBLE);
         Resources rImages = root.getResources();
-        //Drawable idImages = ((ActivityPreguntas) getActivity()).getImageId();
-        //imageM.setImageDrawable(idImages);
-        //imageM.setImageResource(((ActivityPreguntas)getActivity()).getImageId());
         imageM.setImageResource(preguntasList.get(idx).getMultimedia());
 
-        //Toast.makeText(getActivity(),"Imagen", Toast.LENGTH_LONG).show();
-
         return root;
-        //return inflater.inflate(R.layout.fragment_image, container, false);
     }
 }
