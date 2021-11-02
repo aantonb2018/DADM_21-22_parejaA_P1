@@ -240,7 +240,7 @@ public class ActivityPreguntas extends AppCompatActivity {
 
     }
 
-    //Seleccion de preguntas faciles aleatorias, garantizado unos minimos de cada tipo de multiemdia y sin repeticiones
+    //Seleccion de preguntas fáciles aleatorias, garantizado unos minimos de cada tipo de multiemdia y sin repeticiones
     private void seleccionarPreguntasEasy(){
         boolean sinRepetir = true;
         int numA = 0, numV = 0;
