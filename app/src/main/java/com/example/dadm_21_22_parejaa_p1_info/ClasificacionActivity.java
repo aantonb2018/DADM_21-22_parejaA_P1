@@ -29,6 +29,7 @@ public class ClasificacionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clasificacion);
 
+        // JUEGO A PANTALLA COMPLETA
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -39,12 +40,15 @@ public class ClasificacionActivity extends AppCompatActivity {
             tv_clas[i].setText((i+1) + " - " + nicks[i] + " - " + puntos[i]);
         }
 
+        // encontrar botones de las diferentes dificultades
         radioDif[0] = (RadioButton) findViewById(R.id.radioBut_libre_clas);
         radioDif[1] = (RadioButton) findViewById(R.id.radioBut_facil_clas);
         radioDif[2] = (RadioButton) findViewById(R.id.radioBut_medio_clas);
 
+        // por defecto se selecciona el nivel de dificultad "facil"
         radioDif[1].setChecked(true);
 
+        // EVENTOS ON CLICK DE LOS BOTONES DE DIFICULTAD
         radioDif[0].setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 viewTable(0);
@@ -61,6 +65,7 @@ public class ClasificacionActivity extends AppCompatActivity {
             }
         });
 
+        // definición del evento on click del botón "volver al menú"
         ib_volverMenu = (Button) findViewById(R.id.btn_volverMenu_clas);
         ib_volverMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +79,7 @@ public class ClasificacionActivity extends AppCompatActivity {
 
     }
 
+    // método que obtiene los usuarios dependiendo de la dificulad a la que jugaron
     private void leerRankings(int dificultad){
         SharedPreferences ajustes = getApplicationContext().getSharedPreferences("MyPref", 0);
         SharedPreferences.Editor editor = ajustes.edit();
@@ -101,6 +107,7 @@ public class ClasificacionActivity extends AppCompatActivity {
 
     }
 
+    // método que permite visualizar los usuarios y sus resultados
     private void viewTable(int i){
         leerRankings(i);
         for(int j = 0; j < 5; j++){

@@ -65,6 +65,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+        // definición de evento onClick del botón "CLASIFICACIÓN"
         btn_clas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
