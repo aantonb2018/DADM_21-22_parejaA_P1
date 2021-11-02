@@ -118,6 +118,7 @@ public class ActivityPreguntas extends AppCompatActivity {
             }
             SharedPreferences.Editor editor = ajustes.edit();
             editor.putBoolean("filled_BD", true);
+            editor.commit();
         }
         preguntasList = repo.getAllItems();
 
